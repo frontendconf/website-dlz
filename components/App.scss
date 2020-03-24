@@ -1,0 +1,163 @@
+// TODO: preload critical assets like fonts
+@font-face {
+  font-family: $custom-font-name;
+  font-weight: $font-weight-normal;
+  src: url("/static/fonts/38F325_1_unhinted_0.woff2") format("woff2"),
+    url("/static/fonts/38F325_1_unhinted_0.woff") format("woff"),
+    url("/static/fonts/38F325_1_unhinted_0.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: $custom-font-name;
+  font-weight: $font-weight-bold;
+  src: url("/static/fonts/38F325_0_unhinted_0.woff2") format("woff2"),
+    url("/static/fonts/38F325_0_unhinted_0.woff") format("woff"),
+    url("/static/fonts/38F325_0_unhinted_0.ttf") format("truetype");
+  font-display: swap;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  @include font-smoothing;
+  margin: 0;
+  padding: 0;
+  font-family: $font-family;
+  background-color: map-get($colors, background);
+  color: map-get($colors, white);
+  font-weight: $font-weight-normal;
+  overflow-x: hidden;
+}
+
+h1,
+%h1 {
+  font-size: 28px;
+  font-weight: $font-weight-normal;
+  margin: 0 0 35px;
+
+  @include mq-up(md) {
+    font-size: 42px;
+  }
+}
+
+h2,
+%h2 {
+  font-size: 22px;
+  font-weight: $font-weight-bold;
+  margin: 0 0 18px 0;
+
+  @include mq-up(md) {
+    font-size: 26px;
+  }
+}
+
+h3,
+%h3 {
+  font-size: 26px;
+  margin: 0 0 18px 0;
+}
+
+p {
+  font-size: $font-size-bigger-small;
+  line-height: 1.44;
+  letter-spacing: -0.1px;
+  margin: 0 0 1em;
+
+  @include mq-up(md) {
+    font-size: $font-size-regular;
+    letter-spacing: -0.2px;
+  }
+}
+
+.markdown-wrapper {
+  h2 {
+    .content__wrapper--white & {
+      color: $offblack;
+    }
+  }
+
+  h3 {
+    margin-top: 40px;
+  }
+
+  a {
+    @include link;
+  }
+
+  img,
+  .video {
+    margin: 50px 0;
+  }
+
+  img {
+    display: inline-block;
+    max-width: 100%;
+  }
+
+  ul {
+    padding: 0;
+    margin: 34px 0;
+    list-style: none;
+  }
+
+  li {
+    position: relative;
+    padding-left: 37px;
+
+    &::before {
+      content: "•";
+      position: absolute;
+      left: 13px;
+    }
+  }
+
+  li,
+  th,
+  td {
+    font-size: 18px;
+    margin-bottom: 1em;
+  }
+
+  th,
+  td {
+    margin-bottom: 0;
+    padding-right: 1em;
+    padding-bottom: 1em;
+  }
+
+  // Ugly, but it works
+  > *:first-child,
+  > div > *:first-child {
+    margin-top: 0 !important;
+  }
+
+  &--list {
+    h2 {
+      @extend %summary-title;
+      margin-top: 70px;
+    }
+  }
+
+  @include mq-up(md) {
+    .board {
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      li {
+        flex: 0 0 50%;
+      }
+    }
+  }
+
+  @include mq-up(xl) {
+    .board {
+      li {
+        flex: 0 0 33.3333%;
+      }
+    }
+  }
+}

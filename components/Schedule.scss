@@ -1,0 +1,292 @@
+.content__wrapper--schedule {
+  position: relative;
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 82px;
+    background: #1e1732;
+  }
+
+  .content__inner-wrapper {
+    padding-top: 0;
+  }
+}
+
+.schedule {
+  &__tablist {
+    background: #1e1732;
+    display: flex;
+    margin: 0 -21px 30px;
+
+    &-item {
+      font-size: 19px;
+      background: none;
+      border: none;
+      color: #9b9ba3;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      padding: 30px 10px;
+      text-align: center;
+      flex: 1;
+      cursor: pointer;
+
+      &[aria-selected="true"] {
+        background: #09001f;
+        color: #00fff8;
+      }
+    }
+  }
+
+  &__legend {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    font-size: 13px;
+
+    &-item {
+      &::before {
+        content: "";
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        border-radius: 100%;
+        margin-right: 10px;
+        position: relative;
+        top: 4px;
+      }
+
+      &--Folium::before {
+        background: #00fff8;
+      }
+      &--Papiersaal::before {
+        background: #ffda7e;
+      }
+
+      & + & {
+        margin-left: 33px;
+      }
+    }
+  }
+
+  &__tabpanels {
+    margin-top: 40px;
+  }
+
+  &__day {
+    & + & {
+      margin-top: 80px;
+    }
+  }
+
+  &__slots {
+    border-collapse: collapse;
+  }
+
+  &__slot {
+    display: flex;
+    flex-wrap: wrap;
+
+    & + & {
+      border-top: 1px solid #2e2740;
+    }
+  }
+
+  &__slot-time {
+    color: #9b9ba3;
+    font-weight: normal;
+    font-size: 16px;
+    padding: 20px 23px 20px 0;
+    vertical-align: top;
+    width: 70px;
+  }
+  &__slot-talk {
+    vertical-align: top;
+    width: 50%;
+    color: #9b9ba3;
+    font-size: 14px;
+    flex: 1;
+
+    & + & {
+      flex-basis: 100%;
+      padding-left: 70px;
+
+      .schedule__item {
+        padding-top: 0;
+      }
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: flex-start;
+    color: inherit;
+    text-decoration: none;
+    padding: 20px 0;
+  }
+  &__item-photo {
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    flex-shrink: 0;
+    margin-right: 14px;
+  }
+  &__item-title {
+    display: block;
+    font-size: 16px;
+    color: #fff;
+
+    &--talk {
+      font-weight: $font-weight-bold;
+      margin-bottom: 3px;
+    }
+    &--custom {
+      font-weight: $font-weight-bold;
+      text-decoration: none;
+    }
+
+    &--Folium {
+      color: #00fff8;
+    }
+    &--Papiersaal {
+      color: #ffda7e;
+    }
+  }
+  &__item-talk {
+    display: block;
+
+    &--talk {
+      color: #9b9ba3;
+    }
+  }
+  &__item-room {
+    color: #9b9ba3;
+    font-size: 13px;
+    margin-left: auto;
+
+    &--Folium,
+    &--Papiersaal {
+      display: none;
+    }
+  }
+}
+
+@include mq-up(sm) {
+  .schedule {
+    &__tablist {
+      margin-left: -37px;
+      margin-right: -37px;
+    }
+  }
+}
+
+@include mq-up(md) {
+  .schedule {
+    &__tablist {
+      margin-left: -69px;
+      margin-right: -69px;
+    }
+  }
+}
+
+@include mq-up(lg) {
+  .content__wrapper--schedule {
+    &::before {
+      height: 108px;
+    }
+  }
+
+  .schedule {
+    &__tabs {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    &__tablist {
+      margin: 0;
+
+      &-item {
+        font-size: 24px;
+        padding: 40px;
+        white-space: nowrap;
+      }
+    }
+
+    &__legend {
+      font-size: 16px;
+      text-align: right;
+      justify-content: flex-end;
+      margin-left: auto;
+
+      &-item {
+        &::before {
+          content: "";
+          display: inline-block;
+          width: 24px;
+          height: 24px;
+          margin-right: 14px;
+          top: 6px;
+        }
+
+        & + & {
+          margin-left: 40px;
+        }
+      }
+    }
+
+    &__tabpanels {
+      margin-top: 50px;
+      width: 100%;
+    }
+
+    &__slot {
+      display: table-row;
+    }
+    &__slot-time {
+      padding: 40px 110px 40px 0;
+      font-size: 18px;
+      width: auto;
+    }
+    &__slot-talk {
+      padding-right: 55px;
+
+      & + & {
+        padding-left: 55px;
+        padding-right: 0;
+
+        .schedule__item {
+          padding-top: 40px;
+        }
+      }
+
+      &:first-of-type:last-of-type {
+        padding-right: 0;
+      }
+    }
+
+    &__item {
+      padding: 40px 0;
+      align-items: center;
+    }
+    &__item-photo {
+      margin-right: 18px;
+    }
+    &__item-title {
+      font-size: 24px;
+
+      &--talk {
+        font-size: 28px;
+      }
+    }
+    &__item-talk {
+      font-size: 16px;
+    }
+    &__item-room {
+      font-size: 18px;
+    }
+  }
+}

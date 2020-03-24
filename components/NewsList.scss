@@ -1,0 +1,52 @@
+.news-list {
+  margin-top: 100px;
+  margin-bottom: 100px;
+
+  &__row + &__row {
+    margin-top: 70px;
+  }
+
+  &__col {
+    @extend %summary-col;
+  }
+
+  &__body {
+    font-size: 18px;
+    line-height: 1.44;
+    letter-spacing: -0.2px;
+  }
+
+  &__title {
+    text-decoration: none;
+    font-size: 26px;
+    font-weight: bold;
+    color: map_get($colors, "link");
+  }
+
+  &__more {
+    @include link;
+    padding-left: 15px;
+  }
+
+  &__meta {
+    margin-top: 25px;
+  }
+
+  &__date {
+    @include textSubline;
+    margin-right: 25px;
+  }
+
+  &__tags {
+    @include textSubline;
+    display: inline-flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    color: map_get($colors, "link");
+    max-width: 100%;
+  }
+
+  &__tag-item {
+    margin-right: 10px;
+  }
+}

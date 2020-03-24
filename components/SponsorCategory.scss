@@ -1,0 +1,32 @@
+.sponsor-category {
+  margin: 0 0 35px;
+  flex: 1;
+}
+
+@media (min-width: 768px) {
+  .sponsor-category {
+    margin: 0 0 90px;
+  }
+}
+
+.sponsor-category h3 {
+  @include textGradient();
+  font-weight: 400;
+  margin: 0 0 30px;
+  font-size: 22px;
+  text-transform: uppercase;
+
+  @include mq-up(rg) {
+    font-size: 28px;
+  }
+}
+
+.sponsor-category--detail {
+  h3 {
+    color: $offblack;
+  }
+}
+
+.sponsor-category__item {
+  display: flex;
+}

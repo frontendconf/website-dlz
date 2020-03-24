@@ -1,0 +1,284 @@
+$logo-isze-xs: 45px;
+$logo-isze-md: 63px;
+
+.header {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  padding: 18px 0;
+  z-index: 2;
+
+  &__col {
+    position: static;
+  }
+
+  &__inner {
+    display: flex;
+    align-items: center;
+  }
+
+  &__flex-spacer {
+    flex: 1 1 auto;
+  }
+
+  @include mq-up(md) {
+    padding: 32px 0;
+  }
+
+  @include mq-up(lg) {
+    padding: 44px 0;
+  }
+
+  // Noscript version on mobile
+  @include mq-down(md) {
+    .no-js & {
+      position: relative;
+
+      &__inner {
+        flex-wrap: wrap;
+      }
+
+      .nav {
+        position: static;
+        transform: none;
+        background: transparent;
+        width: 100%;
+        padding: 0;
+        margin: 40px 0;
+      }
+
+      .burger {
+        display: none;
+      }
+    }
+  }
+}
+
+.home-link {
+  display: flex;
+  flex: 0 0 auto;
+  text-decoration: none;
+  position: relative;
+  z-index: 2;
+
+  &__image {
+    height: $logo-isze-xs;
+    width: $logo-isze-xs;
+  }
+
+  &__text-wrap {
+    padding-left: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__slogan {
+    @include textGradient();
+    text-transform: uppercase;
+    font-size: 16px;
+    line-height: 1;
+    width: 105px;
+    position: relative;
+    top: 2px;
+  }
+
+  &__date {
+    display: none;
+    font-size: 12px;
+    line-height: 1.2;
+    letter-spacing: 0.5px;
+    color: $white;
+    opacity: 0.8;
+  }
+
+  @include mq-up(md) {
+    &__image {
+      height: $logo-isze-md;
+      width: $logo-isze-md;
+    }
+
+    &__text-wrap {
+      padding: 7px 0 0 23px;
+      justify-content: inherit;
+    }
+
+    &__slogan {
+      font-size: 20px;
+      margin-bottom: 4px;
+      width: auto;
+      top: 0;
+    }
+
+    &__date {
+      display: block;
+    }
+  }
+}
+
+.nav {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
+  background-color: rgba(8, 3, 30, 0.95);
+  padding: 124px 45px 62px 73px;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease;
+
+  &.is-open {
+    transform: translateY(0);
+  }
+
+  &__list {
+    padding: 0;
+    margin: 0;
+
+    &-item {
+      display: block;
+      list-style: none;
+    }
+  }
+
+  &__link {
+    display: block;
+    text-decoration: none;
+    font-size: 20px;
+    line-height: 2;
+    color: map-get(map-get($colors, grays), bombay);
+    text-transform: uppercase;
+    transition: color $transition-time-simple $transition-easing-default;
+
+    &:hover,
+    &:focus,
+    &.is-active {
+      color: white;
+    }
+  }
+
+  @include mq-up(sm) {
+    padding-left: 89px;
+  }
+
+  @include mq-up(md) {
+    padding-top: 150px;
+    padding-bottom: 80px;
+    padding-left: 118px;
+  }
+
+  @include mq-up(lg) {
+    position: static;
+    flex: 0 0 auto;
+    margin-right: 20px;
+    padding: 0;
+    background-color: transparent;
+    transform: none;
+
+    &__list-item {
+      display: inline-block;
+      margin-right: 16px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    &__link {
+      font-size: 14px;
+      line-height: 1;
+      letter-spacing: 1px;
+    }
+  }
+
+  @include mq-up(xl) {
+    margin-right: 40px;
+
+    &__list-item {
+      margin-right: 24px;
+    }
+  }
+}
+
+.special-link {
+  position: relative;
+  z-index: 2;
+  top: -1px;
+  display: block;
+  text-decoration: none;
+  font-size: 13px;
+  line-height: 1;
+  text-align: center;
+  color: #09001f;
+  padding: 14px 20px 11px;
+  border-radius: 100px;
+  text-transform: uppercase;
+
+  &__text {
+    position: relative;
+    z-index: 3;
+  }
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 100px;
+  }
+
+  &::before {
+    background-color: map-get($colors, secondary);
+    z-index: 2;
+  }
+
+  &::after {
+    background: $primary;
+    z-index: 1;
+    transform: rotate(0deg);
+    opacity: 0;
+    transform-origin: right top;
+    transition: transform $transition-time-default $transition-easing-default,
+      opacity $transition-time-default $transition-easing-default;
+  }
+
+  &:hover {
+    &::after {
+      transform: rotate(-2deg);
+      opacity: 1;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .special-link {
+    padding: 14px 37px 11px;
+  }
+}
+
+.burger {
+  position: relative;
+  z-index: 2;
+  background-color: transparent;
+  border-radius: 0;
+  border: 0;
+  color: white;
+  padding: 0;
+  margin-left: 16px;
+}
+
+@include mq-up(rg) {
+  .burger {
+    margin-left: 30px;
+  }
+}
+
+@include mq-up(lg) {
+  .burger {
+    display: none;
+  }
+}

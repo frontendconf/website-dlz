@@ -1,0 +1,11 @@
+.sponsors {
+  @extend %default-module-spacer;
+
+  &__title {
+    @extend %summary-title;
+  }
+
+  &--detail {
+    margin-top: 25px;
+  }
+}

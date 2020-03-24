@@ -1,0 +1,103 @@
+$white: #fff;
+$black: #000;
+$offblack: #08031e;
+
+$primary: #00fff8;
+$secondary: #ffda7e;
+
+$bombay: #b3b3bc;
+$windsor: #300888;
+$dark-blue: #09001f;
+
+// Color system
+$colors: (
+  white: $white,
+  black: $black,
+  background: $offblack,
+  background-dark: $dark-blue,
+  link: $windsor,
+  primary: $primary,
+  secondary: $secondary,
+  grays: (
+    bombay: $bombay
+  )
+);
+
+// Spacing
+$spacer: "1rem";
+$spaces: (
+  none: 0,
+  // TODO: Add correct spacing values
+);
+
+// Links
+//
+// Style anchor elements.
+
+$link-color: $windsor !default;
+$link-decoration: none !default;
+$link-hover-color: darken($link-color, 5%) !default;
+$link-hover-decoration: underline !default;
+
+// Paragraphs
+//
+// Style p element.
+
+// $paragraph-margin-bottom:   1rem !default;
+
+// Grid
+$grid-columns: 12;
+
+$grid-gutters: (
+  xs: 10px,
+  rg: 20px
+);
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 400px,
+  rg: 500px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1500px
+);
+
+/*
+ * Material Design - Motion Guidelines implementation
+ * https://material.io/design/motion/
+ *
+ * The // Original flag simple means, that this variable is not yet tweaked for Post
+ */
+
+// Complexity
+$transition-time-simple: 150ms !default;
+$transition-time-default: 250ms !default;
+$transition-time-morph: 500ms !default; // Original
+$transition-time-fade-in: 200ms !default;
+$transition-time-fade-out: 125ms !default;
+$transition-time-title-out: 500ms !default;
+$transition-time-title-in: 250ms !default;
+
+// Area
+$transition-time-area-small: $transition-time-simple !default;
+$transition-time-area-medium: 350ms !default;
+$transition-time-area-large: 500ms !default;
+
+// Easings
+$transition-easing-default: cubic-bezier(0.4, 0, 0.2, 1) !default;
+$transition-easing-decelerate: cubic-bezier(0, 0, 0.2, 1) !default;
+$transition-easing-accelerate: cubic-bezier(0.4, 0, 1, 1) !default;
+
+// Typography
+$custom-font-name: "Code-Pro-LC";
+
+$font-family: $custom-font-name, Helvetica, Arial, sans-serif;
+
+$font-size-tiny: 11px;
+$font-size-small: 13px;
+$font-size-bigger-small: 15px;
+$font-size-regular: 18px;
+
+$font-weight-normal: 400;
+$font-weight-bold: 700;

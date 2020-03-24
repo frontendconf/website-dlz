@@ -1,0 +1,55 @@
+.speaker {
+  display: block;
+
+  &__link {
+    display: block;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      .speaker__image {
+        @extend %link-image-hover;
+      }
+    }
+  }
+
+  &__image-wrapper {
+    @extend %image-background;
+    margin-bottom: 25px;
+  }
+
+  &__image {
+    @extend %image-skew;
+    @extend %link-image;
+  }
+
+  &__name {
+    @include textGradient;
+    font-size: 18px;
+    line-height: 1;
+    margin: 0 0 5px;
+  }
+
+  // TODO: Refactor with variables & cleanup
+  &__description {
+    font-size: $font-size-tiny;
+    color: #b3b3bc;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  @include mq-up(rg) {
+    &__image-wrapper {
+      margin-bottom: 50px;
+    }
+
+    &__name {
+      font-size: 28px;
+      margin: 0 0 15px;
+    }
+
+    &__description {
+      font-size: $font-size-small;
+    }
+  }
+}

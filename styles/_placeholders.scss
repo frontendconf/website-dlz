@@ -1,0 +1,139 @@
+%default-module-spacer {
+  margin-top: 80px;
+  margin-bottom: 80px;
+
+  @include mq-up(rg) {
+    margin-top: 120px;
+    margin-bottom: 120px;
+  }
+
+  @include mq-up(lg) {
+    margin-top: 150px;
+    margin-bottom: 150px;
+  }
+
+  @include mq-up(xl) {
+    margin-top: 200px;
+    margin-bottom: 200px;
+  }
+
+  @include mq-up(xxl) {
+    margin-top: 220px;
+    margin-bottom: 240px;
+  }
+}
+
+%unstyled-list {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+%screenreader-only {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+%summary-title {
+  @include textGradient;
+  display: inline-block; // Necessary for the background-clip
+  font-size: 28px;
+  margin: 0 0 1em;
+  font-weight: normal;
+
+  @include mq-up(rg) {
+    font-size: 33px;
+  }
+
+  @include mq-up(lg) {
+    font-size: 38px;
+  }
+
+  @include mq-up(xl) {
+    font-size: 46px;
+  }
+}
+
+%summary-col {
+  padding-bottom: 20px;
+}
+
+%summary-link {
+  position: relative;
+  display: block;
+  background: #1e1631;
+  min-height: 120px;
+  padding: 18px 18px;
+  text-decoration: none;
+  width: 100%;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    right: -3px;
+    bottom: 2px;
+    left: 5px;
+    transform: rotate(-2deg);
+    background-color: $primary;
+    z-index: -1;
+    transition: background-color $transition-time-simple
+        $transition-easing-default,
+      transform $transition-time-simple $transition-easing-default;
+  }
+
+  &:hover,
+  &:focus {
+    &::after {
+      background-color: $secondary;
+      transform: rotate(-4deg);
+    }
+  }
+}
+
+%summary-link-title {
+  @include textGradient;
+  display: inline-block;
+  font-size: 20px;
+  line-height: 1.1;
+  margin-bottom: 9px;
+}
+
+%summary-link-subtitle {
+  @include textSubline;
+  display: block;
+}
+
+%image-skew {
+  display: block;
+  max-width: 100%;
+  transform: rotate(-5deg);
+}
+
+%image-background {
+  @include gradient;
+  background-blend-mode: color;
+}
+
+%link-image {
+  filter: grayscale(100%);
+  opacity: 0.9;
+  transition: opacity $transition-time-simple $transition-easing-default,
+    transform $transition-time-simple $transition-easing-default,
+    filter $transition-time-simple $transition-easing-default;
+}
+
+%link-image-hover {
+  transform: rotate(0);
+  filter: grayscale(0);
+  opacity: 1;
+}
+
+%blue-link-title {
+  font-size: 26px;
+  margin: 0 0 15px;
+}

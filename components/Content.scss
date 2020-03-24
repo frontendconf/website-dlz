@@ -1,0 +1,109 @@
+.content {
+  &__wrapper {
+    position: relative;
+
+    &--white {
+      padding-bottom: 80px;
+      background-color: white;
+      color: $offblack;
+    }
+
+    &--dark {
+      position: relative;
+      background-color: map-get($colors, background-dark);
+    }
+  }
+
+  // Remove maring of last item
+  &__inner-wrapper {
+    padding-top: 70px;
+
+    > *:first-child {
+      margin-top: 0;
+    }
+
+    > *:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  @include mq-up(rg) {
+    &__wrapper--white {
+      padding-bottom: 120px;
+    }
+
+    &__inner-wrapper {
+      padding-top: 110px;
+    }
+  }
+
+  @include mq-up(md) {
+    &__wrapper--white {
+      padding-bottom: 150px;
+    }
+
+    &__floating-row {
+      @include clearfix;
+      display: block;
+    }
+
+    &__left {
+      float: left;
+    }
+
+    &__right {
+      float: right;
+    }
+  }
+
+  @include mq-up(lg) {
+    &__white-wrapper {
+      padding-bottom: 200px;
+    }
+  }
+}
+
+.content::before {
+  @extend %hero-bg;
+
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s 0.2s ease;
+}
+
+.content--loading::before {
+  opacity: 1;
+}
+
+// TODO: Add responsive behaviour
+.content-title {
+  margin: 0 0 35px;
+
+  &__title {
+    @extend %h1;
+    margin: 0;
+  }
+
+  &__subtitle {
+    margin: 5px 0 0;
+    font-size: $font-size-bigger-small;
+    font-weight: $font-weight-normal;
+    color: #b3b3bc;
+  }
+
+  @include mq-up(md) {
+    margin: 0 0 55px;
+
+    &__subtitle {
+      margin-top: 10px;
+      font-size: $font-size-regular;
+    }
+  }
+}

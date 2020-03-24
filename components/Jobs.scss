@@ -1,0 +1,63 @@
+.jobs {
+  @extend %default-module-spacer;
+
+  &--detailed {
+    &#{&} {
+      margin-bottom: 50px;
+
+      @include mq-up(lg) {
+        margin-bottom: 100px;
+      }
+    }
+  }
+
+  &__title {
+    @extend %summary-title;
+  }
+
+  &__col {
+    @extend %summary-col;
+  }
+
+  &__link {
+    @extend %summary-link;
+
+    &-title {
+      @extend %summary-link-title;
+    }
+
+    &-company {
+      @extend %summary-link-subtitle;
+    }
+  }
+
+  &__source {
+    @include textSubline;
+    text-align: right;
+    margin: 15px 0 0;
+    width: 100%;
+
+    @include mq-up(rg) {
+      margin-top: 20px;
+    }
+  }
+
+  &__source-link {
+    flex: 1;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 16px;
+    opacity: 0.4;
+    transition: opacity $transition-time-simple $transition-easing-default;
+
+    svg {
+      fill: #fff;
+      height: 24px;
+    }
+
+    &:hover,
+    &:focus {
+      opacity: 1;
+    }
+  }
+}

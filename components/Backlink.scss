@@ -1,0 +1,65 @@
+.backlink {
+  padding: 25px 0 30px;
+
+  &__link {
+    display: inline-flex;
+    color: $offblack;
+    text-decoration: none;
+    align-items: center;
+
+    &:hover,
+    &:focus {
+      .backlink__icon {
+        transform: translateX(-4px);
+      }
+    }
+  }
+
+  &__icon-wrapper {
+    display: flex;
+    height: $logo-isze-xs;
+    width: $logo-isze-xs;
+    border-radius: 100px;
+    margin-right: 14px;
+    background-color: $offblack;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__icon {
+    flex: 0 0 auto;
+    color: #fff;
+    transition: transform $transition-time-area-small $transition-easing-default;
+
+    svg,
+    & {
+      height: 14px;
+      width: 10px;
+    }
+  }
+
+  &__text-wrapper {
+    font-size: 16px;
+    line-height: 1.44;
+    letter-spacing: -0.1px;
+  }
+
+  @include mq-up(md) {
+    padding: 45px 0 50px;
+
+    &__icon-wrapper {
+      height: $logo-isze-md;
+      width: $logo-isze-md;
+      margin-right: 22px;
+    }
+
+    &__text-wrapper {
+      font-size: $font-size-regular;
+      letter-spacing: -0.2px;
+    }
+  }
+
+  @include mq-up(lg) {
+    padding: 65px 0 70px;
+  }
+}

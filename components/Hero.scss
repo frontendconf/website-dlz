@@ -1,0 +1,207 @@
+@keyframes moveIn {
+  0% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes moveInReverse {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes moveOut {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.15;
+  }
+  100% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+}
+
+@keyframes moveOutReverse {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.15;
+  }
+  100% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+}
+
+.hero {
+  height: auto;
+  padding: 90px 0 0;
+  max-width: 100vw;
+  overflow: hidden;
+
+  &__container {
+    height: 100%;
+  }
+
+  &__row {
+    height: 100%;
+  }
+
+  &__col {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__inner {
+    display: block;
+    padding-top: 30px;
+    padding-bottom: 60px;
+  }
+
+  &__title-wrapper {
+    position: relative;
+  }
+
+  &__title {
+    @include textGradient;
+    font-weight: normal;
+    letter-spacing: #{- (1em / 20em)}em;
+    margin: 0 0 40px;
+    animation: moveIn $transition-time-title-in;
+
+    @include fontSizeAndLineHeight(
+      pxToRem(35),
+      pxToRem(45),
+      pxToRem(60),
+      pxToRem(85),
+      pxToRem(95),
+      pxToRem(120),
+      pxToRem(128)
+    );
+  }
+
+  &__title--in-reverse {
+    animation: moveInReverse $transition-time-title-in;
+  }
+
+  &__title--out {
+    position: absolute;
+    left: 0;
+    top: 0;
+    animation: moveOut $transition-time-title-out;
+  }
+
+  &__title--out-reverse {
+    animation: moveOutReverse $transition-time-title-out;
+  }
+
+  &__lead {
+    opacity: 0.6;
+    font-size: 18px;
+    line-height: 1.67;
+  }
+
+  &__ctas-wrapper {
+    padding-bottom: 30px;
+  }
+
+  &__cta {
+    @include buttonBig;
+    display: inline-block;
+    margin-bottom: 10px;
+
+    &:not(:last-child) {
+      margin-right: 15px;
+    }
+  }
+
+  @include mq-up(rg) {
+    height: auto;
+    padding: 130px 0 0;
+
+    &__ctas-wrapper {
+      padding-bottom: 55px;
+    }
+  }
+
+  @include mq-up(md) {
+    padding: 150px 0 0;
+    height: calc(100vh - 300px);
+    min-height: 770px;
+
+    &__lead {
+      font-size: 24px;
+    }
+
+    &__inner {
+      padding-top: 70px;
+    }
+
+    &__title {
+      margin: 0 0 76px;
+    }
+
+    &__ctas-wrapper {
+      padding-bottom: 80px;
+    }
+
+    &__cta {
+      &:not(:last-child) {
+        margin-right: 25px;
+      }
+    }
+  }
+
+  @include mq-up(lg) {
+    min-height: 1000px;
+
+    &__inner {
+      padding-top: 110px;
+    }
+
+    &__title {
+      margin: 0 0 76px;
+    }
+  }
+}
+
+.hero--content {
+  padding: 0;
+  height: 88px;
+  min-height: inherit;
+
+  & .hero {
+    &__inner {
+      display: none;
+    }
+  }
+
+  @include mq-up(md) {
+    height: 128px;
+  }
+
+  @include mq-up(lg) {
+    height: 150px;
+  }
+}
