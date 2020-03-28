@@ -1,42 +1,27 @@
+// Colors
+$purple: #7c67ff;
+$aquamarine: #67ffd1;
+$navy: #1c112f;
+
+$grey: #877f94;
+$pale-grey: #dbd7e0;
+$light-grey: #f4f2f7;
 $white: #fff;
-$black: #000;
-$offblack: #08031e;
 
-$primary: #00fff8;
-$secondary: #ffda7e;
+// Theme
+$primary: $purple;
+$secondary: $aquamarine;
 
-$bombay: #b3b3bc;
-$windsor: #300888;
-$dark-blue: #09001f;
-
-// Color system
-$colors: (
-  white: $white,
-  black: $black,
-  background: $offblack,
-  background-dark: $dark-blue,
-  link: $windsor,
-  primary: $primary,
-  secondary: $secondary,
-  grays: (
-    bombay: $bombay
-  )
-);
-
-// Spacing
-$spacer: "1rem";
-$spaces: (
-  none: 0,
-  // TODO: Add correct spacing values
-);
+$body-color: $grey;
+$body-background: $white;
 
 // Links
 //
 // Style anchor elements.
 
-$link-color: $windsor !default;
+$link-color: $navy !default;
 $link-decoration: none !default;
-$link-hover-color: darken($link-color, 5%) !default;
+$link-hover-color: lighter($link-color, 5%) !default;
 $link-hover-decoration: underline !default;
 
 // Paragraphs
@@ -50,7 +35,7 @@ $grid-columns: 12;
 
 $grid-gutters: (
   xs: 10px,
-  rg: 20px
+  rg: 24px
 );
 
 $grid-breakpoints: (
@@ -60,7 +45,7 @@ $grid-breakpoints: (
   md: 768px,
   lg: 992px,
   xl: 1200px,
-  xxl: 1500px
+  xxl: 1480px
 );
 
 /*
@@ -90,7 +75,7 @@ $transition-easing-decelerate: cubic-bezier(0, 0, 0.2, 1) !default;
 $transition-easing-accelerate: cubic-bezier(0.4, 0, 1, 1) !default;
 
 // Typography
-$custom-font-name: "Code-Pro-LC";
+$custom-font-name: "TT Norms";
 
 $font-family: $custom-font-name, Helvetica, Arial, sans-serif;
 
@@ -99,5 +84,5 @@ $font-size-small: 13px;
 $font-size-bigger-small: 15px;
 $font-size-regular: 18px;
 
-$font-weight-normal: 400;
+$font-weight-medium: 500;
 $font-weight-bold: 700;

@@ -25,7 +25,7 @@
     text-decoration: none;
     font-size: $font-size-bigger-small;
     line-height: 1.27;
-    color: $bombay;
+    // color: $bombay;
     transition: color $transition-time-simple $transition-easing-default;
 
     &:hover,
@@ -51,7 +51,7 @@
 
   &--is-venue {
     .venue-teaser__title {
-      color: $offblack;
+      color: $navy;
     }
   }
 }

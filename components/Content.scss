@@ -2,16 +2,11 @@
   &__wrapper {
     position: relative;
 
-    &--white {
-      padding-bottom: 80px;
-      background-color: white;
-      color: $offblack;
-    }
-
-    &--dark {
-      position: relative;
-      background-color: map-get($colors, background-dark);
-    }
+    // &--white {
+    //   padding-bottom: 80px;
+    //   background-color: white;
+    //   color: $navy;
+    // }
   }
 
   // Remove maring of last item
@@ -64,7 +59,7 @@
 }
 
 .content::before {
-  @extend %hero-bg;
+  // @extend %hero-bg;
 
   content: "";
   position: fixed;
@@ -94,7 +89,7 @@
   &__subtitle {
     margin: 5px 0 0;
     font-size: $font-size-bigger-small;
-    font-weight: $font-weight-normal;
+    font-weight: $font-weight-medium;
     color: #b3b3bc;
   }
 

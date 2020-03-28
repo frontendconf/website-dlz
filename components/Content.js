@@ -9,7 +9,6 @@ import { Container, Row, Col } from "./shared/Grid";
 import VenueTeaser from "./VenueTeaser";
 import Jobs from "./Jobs";
 import Hero from "./Hero";
-import HeroBG from "./HeroBG";
 import SpeakersList from "./speaker/SpeakersList";
 import Backlink from "./Backlink";
 import { SpeakerImage, SpeakerSocials } from "./speaker/SpeakerLink";
@@ -168,6 +167,8 @@ export default withRouter(({ router: { query } }) => {
   let isHome = slug === "/";
   let isVenue = slug === "venue";
 
+  console.log(slug);
+
   // Root categories
   switch (slug) {
     case "schedule":
@@ -321,7 +322,6 @@ export default withRouter(({ router: { query } }) => {
                 className={loading ? "content content--loading" : "content"}
               >
                 <CustomHead />
-                <HeroBG />
                 <Hero
                   title={title}
                   subTitle={subTitle}
@@ -331,11 +331,7 @@ export default withRouter(({ router: { query } }) => {
                 />
                 <div
                   className={`content__wrapper content__wrapper--${category ||
-                    slug}${
-                    darkContent
-                      ? " content__wrapper--dark"
-                      : " content__wrapper--white"
-                  }`}
+                    slug}`}
                 >
                   <Container>
                     <Row>
@@ -526,7 +522,6 @@ export default withRouter(({ router: { query } }) => {
                 className={loading ? "content content--loading" : "content"}
               >
                 <CustomHead />
-                <HeroBG />
                 <Hero
                   title={title}
                   subTitle={subTitle}

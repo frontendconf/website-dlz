@@ -1,42 +1,32 @@
 .container {
-  max-width: 1680px;
-  padding-right: 16px;
-  padding-left: 16px;
+  max-width: px-to-rem(1480);
   margin: 0 auto;
+  padding-right: px-to-rem(16);
+  padding-left: px-to-rem(16);
 
   @include mq-up(sm) {
-    padding-right: 32px;
-    padding-left: 32px;
+    padding-right: px-to-rem(32);
+    padding-left: px-to-rem(32);
+  }
+
+  @include mq-up(rg) {
+    padding-right: px-to-rem(48);
+    padding-left: px-to-rem(48);
   }
 
   @include mq-up(md) {
-    padding-right: 64px;
-    padding-left: 64px;
-    
-    &--wide {
-      padding-right: 32px;
-      padding-left: 32px;
-    }
+    padding-right: px-to-rem(64);
+    padding-left: px-to-rem(64);
   }
 
   @include mq-up(xl) {
-    padding-right: 120px;
-    padding-left: 120px;
-
-    &--wide {
-      padding-right: 40px;
-      padding-left: 40px;
-    }
+    padding-right: px-to-rem(100);
+    padding-left: px-to-rem(100);
   }
 
-  @include mq-up(xxl) {
-    padding-right: 200px;
-    padding-left: 200px;
-
-    &--wide {
-      padding-right: 56px;
-      padding-left: 56px;
-    }
+  &--wide {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
   }
 }
 
@@ -45,26 +35,17 @@
   flex-wrap: wrap;
 
   @each $bp, $gutter in $grid-gutters {
-    @if bp == "xs" {
-      margin-right: - $gutter / 2;
-      margin-left: - $gutter / 2;
-    } @else {
-      @include mq-up($bp) {
-        margin-right: - $gutter / 2;
-        margin-left: - $gutter / 2;
-      }
+    @include dynamic-media-query($bp) {
+      margin-right: -$gutter / 2;
+      margin-left: -$gutter / 2;
     }
   }
 
   &--horizontal-gutters {
     .col {
       @each $bp, $gutter in $grid-gutters {
-        @if bp == "xs" {
+        @include dynamic-media-query($bp) {
           padding-bottom: $gutter;
-        } @else {
-          @include mq-up($bp) {
-            padding-bottom: $gutter;
-          }
         }
       }
     }
@@ -76,15 +57,11 @@
   position: relative;
   min-height: 1px;
 
+  // Setting different gutters for different breakpoints
   @each $bp, $gutter in $grid-gutters {
-    @if bp == "xs" {
+    @include dynamic-media-query($bp) {
       padding-right: $gutter / 2;
       padding-left: $gutter / 2;
-    } @else {
-      @include mq-up($bp) {
-        padding-right: $gutter / 2;
-        padding-left: $gutter / 2;
-      }
     }
   }
 }
@@ -111,12 +88,8 @@
   }
 }
 
-@each $key, $width in $grid-breakpoints {
-  @if $width == 0 {
-    @include create-cols($key);
-  } @else {
-      @media (min-width: #{$width}) {
-        @include create-cols($key);
-      }
+@each $bp, $width in $grid-breakpoints {
+  @include dynamic-media-query($bp) {
+    @include create-cols($bp);
   }
 }

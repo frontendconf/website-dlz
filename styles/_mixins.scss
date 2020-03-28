@@ -36,7 +36,7 @@
 
 @mixin textSubline {
   font-size: 13px; // TODO: Font-size into variable
-  font-weight: normal;
+  font-weight: $font-weight-medium;
   font-style: normal;
   font-stretch: normal;
   line-height: normal;

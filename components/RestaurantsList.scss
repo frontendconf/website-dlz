@@ -3,7 +3,7 @@
 
   &__title {
     @extend %summary-title;
-    color: $offblack;
+    color: $navy;
   }
 
   &__list {
@@ -46,6 +46,6 @@
   }
 
   &__description {
-    color: $offblack;
+    color: $navy;
   }
 }

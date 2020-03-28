@@ -43,7 +43,7 @@
   display: inline-block; // Necessary for the background-clip
   font-size: 28px;
   margin: 0 0 1em;
-  font-weight: normal;
+  font-weight: $font-weight-medium;
 
   @include mq-up(rg) {
     font-size: 33px;

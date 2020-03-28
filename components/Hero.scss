@@ -85,19 +85,19 @@
 
   &__title {
     @include textGradient;
-    font-weight: normal;
+    font-weight: $font-weight-medium;
     letter-spacing: #{- (1em / 20em)}em;
     margin: 0 0 40px;
     animation: moveIn $transition-time-title-in;
 
     @include fontSizeAndLineHeight(
-      pxToRem(35),
-      pxToRem(45),
-      pxToRem(60),
-      pxToRem(85),
-      pxToRem(95),
-      pxToRem(120),
-      pxToRem(128)
+      px-to-rem(35),
+      px-to-rem(45),
+      px-to-rem(60),
+      px-to-rem(85),
+      px-to-rem(95),
+      px-to-rem(120),
+      px-to-rem(128)
     );
   }
 

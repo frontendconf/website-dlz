@@ -3,7 +3,7 @@
 
   &__link {
     display: inline-flex;
-    color: $offblack;
+    color: $navy;
     text-decoration: none;
     align-items: center;
 
@@ -17,11 +17,11 @@
 
   &__icon-wrapper {
     display: flex;
-    height: $logo-isze-xs;
-    width: $logo-isze-xs;
+    height: $logo-size-xs;
+    width: $logo-size-xs;
     border-radius: 100px;
     margin-right: 14px;
-    background-color: $offblack;
+    background-color: $navy;
     align-items: center;
     justify-content: center;
   }
@@ -48,8 +48,8 @@
     padding: 45px 0 50px;
 
     &__icon-wrapper {
-      height: $logo-isze-md;
-      width: $logo-isze-md;
+      height: $logo-size-md;
+      width: $logo-size-md;
       margin-right: 22px;
     }
 

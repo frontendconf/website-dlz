@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const FadeIn = ({ delay, children, style }) => (
   <ScrollAnimation
-    animateIn="fadeInUp"
+    animateIn="fade-in-up"
     duration={0.7}
     delay={delay}
     style={style}

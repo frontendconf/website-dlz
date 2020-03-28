@@ -1,7 +1,7 @@
 .newsletter h3 {
   @include textGradient();
   font-size: 20px;
-  font-weight: normal;
+  font-weight: $font-weight-medium;
   margin: 0 0 20px;
 }
 

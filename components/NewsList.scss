@@ -19,8 +19,8 @@
   &__title {
     text-decoration: none;
     font-size: 26px;
-    font-weight: bold;
-    color: map_get($colors, "link");
+    font-weight: $font-weight-bold;
+    // color: map_get($colors, "link");
   }
 
   &__more {
@@ -42,7 +42,7 @@
     display: inline-flex;
     justify-content: flex-start;
     flex-wrap: wrap;
-    color: map_get($colors, "link");
+    // color: map_get($colors, "link");
     max-width: 100%;
   }
 

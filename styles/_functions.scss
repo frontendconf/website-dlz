@@ -1,9 +1,19 @@
-@function pxToRem($px) {
+@function px-to-rem($px) {
   @return ($px / 16) * 1rem;
 }
 
-@function remToPx($rem) {
+@function rem-to-px($rem) {
   @return ($rem * 16) * 1px;
+}
+
+@mixin dynamic-media-query($bp) {
+  @if bp == "xs" {
+    @content;
+  } @else {
+    @include mq-up($bp) {
+      @content;
+    }
+  }
 }
 
 // Name of the next breakpoint, or null for the last breakpoint.

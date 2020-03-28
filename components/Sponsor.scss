@@ -25,7 +25,7 @@
 
   &:not(&--logo) {
     background: #fff; // Temporary since the container should be white instead
-    color: $offblack;
+    color: $navy;
     border-top: 1px solid #9b9ba3;
     padding-top: 72px;
     padding-bottom: 56px;
@@ -41,7 +41,7 @@
     }
 
     .sponsor__svg {
-      fill: $offblack;
+      fill: $navy;
     }
 
     @include mq-down(rg) {
@@ -75,7 +75,7 @@
 
 .sponsor__title {
   font-size: 26px;
-  font-weight: bold;
+  font-weight: $font-weight-bold;
   margin-bottom: 20px;
   margin-top: 0;
 }
