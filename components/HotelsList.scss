@@ -3,7 +3,11 @@
 
   &__title {
     @extend %summary-title;
-    color: $navy;
+    text-align: left;
+  }
+
+  &__text {
+    @extend %summary-text;
   }
 
   &__list {
@@ -30,22 +34,26 @@
   }
 
   &__image-wrapper {
-    @extend %image-background;
     margin-bottom: 25px;
   }
 
   &__image {
-    @extend %image-skew;
-    @extend %link-image;
     padding-top: 75%;
   }
 
   &__name {
-    font-size: 26px;
-    margin: 0 0 15px;
+    color: $navy;
+    margin: 0 0 px-to-rem(8);
+    font-size: px-to-rem(22);
+    font-weight: $font-weight-bold;
+    line-height: 1.6;
+    letter-spacing: px-to-rem(1);
   }
 
   &__description {
-    color: $navy;
+    color: $grey;
+    font-size: 15px;
+    line-height: 1.6;
+    letter-spacing: 1px;
   }
 }

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import shuffle from "array-shuffle";
 // import ScrollAnimation from 'react-animate-on-scroll';
-import { Row, Col } from "./shared/Grid";
+import { Container, Row, Col } from "./shared/Grid";
 import FadeIn from "./FadeIn";
 import Logo from "../static/freshjobs.svg";
 

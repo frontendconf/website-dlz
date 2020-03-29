@@ -1,7 +1,7 @@
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import ErrorMessage from "./ErrorMessage";
-import { Row, Col } from "./shared/Grid";
+import { Container, Row, Col } from "./shared/Grid";
 import FadeIn from "./FadeIn";
 import Image from "./Image";
 
@@ -23,7 +23,7 @@ const HotelQuery = gql`
 const HotelsList = () => (
   <div className="hotels">
     <Row>
-      <Col className="xs-12 lg-10 offset-lg-1">
+      <Col className="xs-12 lg-10 xl-8 offset-lg-1 offset-xl-2">
         <h2 className="hotels__title">Sleeping in Zurich</h2>
         <p className="hotels__text">
           You can book approximately 200 hotels free of charge through Zurich

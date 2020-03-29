@@ -10,52 +10,52 @@
   }
 
   // Remove maring of last item
-  &__inner-wrapper {
-    padding-top: 70px;
+  // &__inner-wrapper {
+  //   padding-top: 70px;
 
-    > *:first-child {
-      margin-top: 0;
-    }
+  //   > *:first-child {
+  //     margin-top: 0;
+  //   }
 
-    > *:last-child {
-      margin-bottom: 0;
-    }
-  }
+  //   > *:last-child {
+  //     margin-bottom: 0;
+  //   }
+  // }
 
-  @include mq-up(rg) {
-    &__wrapper--white {
-      padding-bottom: 120px;
-    }
+  // @include mq-up(rg) {
+  //   &__wrapper--white {
+  //     padding-bottom: 120px;
+  //   }
 
-    &__inner-wrapper {
-      padding-top: 110px;
-    }
-  }
+  //   &__inner-wrapper {
+  //     padding-top: 110px;
+  //   }
+  // }
 
-  @include mq-up(md) {
-    &__wrapper--white {
-      padding-bottom: 150px;
-    }
+  // @include mq-up(md) {
+  //   &__wrapper--white {
+  //     padding-bottom: 150px;
+  //   }
 
-    &__floating-row {
-      @include clearfix;
-      display: block;
-    }
+  //   &__floating-row {
+  //     @include clearfix;
+  //     display: block;
+  //   }
 
-    &__left {
-      float: left;
-    }
+  //   &__left {
+  //     float: left;
+  //   }
 
-    &__right {
-      float: right;
-    }
-  }
+  //   &__right {
+  //     float: right;
+  //   }
+  // }
 
-  @include mq-up(lg) {
-    &__white-wrapper {
-      padding-bottom: 200px;
-    }
-  }
+  // @include mq-up(lg) {
+  //   &__white-wrapper {
+  //     padding-bottom: 200px;
+  //   }
+  // }
 }
 
 .content::before {

@@ -4,9 +4,8 @@ import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import Link from "next/link";
 import FadeIn from "./FadeIn";
-import { Row, Col } from "./shared/Grid";
+import { Container, Row, Col } from "./shared/Grid";
 import { FormattedDate } from "react-intl/dist";
-import shuffle from "array-shuffle";
 
 const currentDate = new Date().toISOString();
 

@@ -25,7 +25,6 @@
     text-decoration: none;
     font-size: $font-size-bigger-small;
     line-height: 1.27;
-    // color: $bombay;
     transition: color $transition-time-simple $transition-easing-default;
 
     &:hover,
@@ -39,19 +38,13 @@
   }
 
   &__image-wrapper {
-    @extend %image-background;
+    // @extend %image-background;
     margin-bottom: 25px;
   }
 
   &__image {
-    @extend %image-skew;
-    @extend %link-image;
-    padding-top: 100%;
-  }
-
-  &--is-venue {
-    .venue-teaser__title {
-      color: $navy;
-    }
+    // @extend %image-skew;
+    // @extend %link-image;
+    padding-top: 50%;
   }
 }

@@ -26,7 +26,7 @@ const teaserQuery = gql`
 
 const ImageTeaser = ({ venueTeaser }) => (
   <Row>
-    <Col className="xs-12 rg-6">
+    <Col className="xs-12">
       <FadeIn style={{ display: "block" }}>
         <div className="venue-teaser__image-wrapper">
           <Image
@@ -74,40 +74,30 @@ export default function VenueTeaser({ isVenue = false }) {
         } = data;
 
         return (
-          <div
-            className={`venue-teaser ${
-              isVenue ? "venue-teaser--is-venue" : ""
-            }`}
-          >
-            <Row>
-              <Col className="xs-12">
-                {isVenue ? (
-                  <>
+          <div className="venue-teaser">
+            {isVenue ? (
+              <>
+                <ImageTeaser venueTeaser={venueTeaser} />
+                <div
+                  className="venue-teaser__map"
+                  dangerouslySetInnerHTML={{ __html: map }}
+                />
+              </>
+            ) : (
+              <>
+                <FadeIn>
+                  <h2 className="venue-teaser__title">{venueTeaser.title}</h2>
+                </FadeIn>
+                <Link
+                  href={{ pathname: "/", query: { slug: "venue" } }}
+                  as={`/venue`}
+                >
+                  <a className="venue-teaser__link">
                     <ImageTeaser venueTeaser={venueTeaser} />
-                    <div
-                      className="venue-teaser__map"
-                      dangerouslySetInnerHTML={{ __html: map }}
-                    />
-                  </>
-                ) : (
-                  <>
-                    <FadeIn>
-                      <h2 className="venue-teaser__title">
-                        {venueTeaser.title}
-                      </h2>
-                    </FadeIn>
-                    <Link
-                      href={{ pathname: "/", query: { slug: "venue" } }}
-                      as={`/venue`}
-                    >
-                      <a className="venue-teaser__link">
-                        <ImageTeaser venueTeaser={venueTeaser} />
-                      </a>
-                    </Link>
-                  </>
-                )}
-              </Col>
-            </Row>
+                  </a>
+                </Link>
+              </>
+            )}
           </div>
         );
       }}

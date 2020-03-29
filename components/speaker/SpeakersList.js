@@ -4,7 +4,7 @@ import gql from "graphql-tag";
 import Link from "next/link";
 import Speaker from "./SpeakerLink";
 import ErrorMessage from "../ErrorMessage";
-import { Row, Col } from "../shared/Grid";
+import { Container, Row, Col } from "../shared/Grid";
 import FadeIn from "../FadeIn";
 import { Component } from "react";
 

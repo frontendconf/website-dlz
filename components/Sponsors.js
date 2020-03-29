@@ -1,5 +1,6 @@
 import FadeIn from "./FadeIn";
 import SponsorCategory from "./SponsorCategory";
+import { Container } from "./shared/Grid";
 
 export default function Sponsors({ details = false }) {
   return (

@@ -334,99 +334,85 @@ export default withRouter(({ router: { query } }) => {
                     slug}`}
                 >
                   <Container>
-                    <Row>
-                      <Col className="xs-12">
-                        <div className="content__inner-wrapper">
-                          {currentPage.body && (
-                            <Row>
-                              <Col
-                                className={`xs-12 ${
-                                  !wideContent
-                                    ? "rg-10 offset-rg-1 lg-8 offset-lg-2"
-                                    : ""
-                                }`}
-                              >
-                                <div className="markdown-wrapper markdown-wrapper--list">
-                                  <Markdown options={{ forceBlock: true }}>
-                                    {currentPage.body}
-                                  </Markdown>
-                                </div>
-                              </Col>
-                            </Row>
-                          )}
-                          {currentPage.showVenue && (
-                            <VenueTeaser isVenue={isVenue} />
-                          )}
-                          {currentPage.showNews && <NewsList />}
-                          {currentPage.showHotels && <HotelsList />}
-                          {currentPage.showRestaurants && <RestaurantsList />}
-                          {currentPage.showSponsorsDetailed && (
-                            <Sponsors details={true} />
-                          )}
-                          {currentPage.showWorkshops && <Workshops />}
-                          {currentPage.showSchedule && <Schedule />}
-                          {currentPage.showJobsDetailed && (
-                            <Jobs isDetailed={true} />
-                          )}
-                          {currentPage.showCallForSpeakers && (
-                            <Row>
-                              <Col
-                                className={`xs-12 ${
-                                  !wideContent
-                                    ? "rg-10 offset-rg-1 lg-8 offset-lg-2"
-                                    : ""
-                                }`}
-                              >
-                                <AirtableForm
-                                  title="Submit proposal"
-                                  table="Call for Speakers"
-                                />
-                              </Col>
-                            </Row>
-                          )}
-                          {currentPage.showSpeakersForm && (
-                            <Row>
-                              <Col
-                                className={`xs-12 ${
-                                  !wideContent
-                                    ? "rg-10 offset-rg-1 lg-8 offset-lg-2"
-                                    : ""
-                                }`}
-                              >
-                                <AirtableForm table="Invited Speakers" />
-                              </Col>
-                            </Row>
-                          )}
-                          {currentPage.showSpeakersFormWorkshop && (
-                            <Row>
-                              <Col
-                                className={`xs-12 ${
-                                  !wideContent
-                                    ? "rg-10 offset-rg-1 lg-8 offset-lg-2"
-                                    : ""
-                                }`}
-                              >
-                                <AirtableForm table="Workshops" />
-                              </Col>
-                            </Row>
-                          )}
-                        </div>
-                      </Col>
-                    </Row>
+                    <div className="content__inner-wrapper">
+                      {currentPage.body && (
+                        <Row>
+                          <Col
+                            className={`xs-12 ${
+                              !wideContent
+                                ? "rg-10 offset-rg-1 lg-8 offset-lg-2"
+                                : ""
+                            }`}
+                          >
+                            <div className="markdown-wrapper markdown-wrapper--list">
+                              <Markdown options={{ forceBlock: true }}>
+                                {currentPage.body}
+                              </Markdown>
+                            </div>
+                          </Col>
+                        </Row>
+                      )}
+                      {currentPage.showVenue && (
+                        <VenueTeaser isVenue={isVenue} />
+                      )}
+                      {currentPage.showNews && <NewsList />}
+                      {currentPage.showHotels && <HotelsList />}
+                      {currentPage.showRestaurants && <RestaurantsList />}
+                      {currentPage.showSponsorsDetailed && (
+                        <Sponsors details={true} />
+                      )}
+                      {currentPage.showWorkshops && <Workshops />}
+                      {currentPage.showSchedule && <Schedule />}
+                      {currentPage.showJobsDetailed && (
+                        <Jobs isDetailed={true} />
+                      )}
+                      {currentPage.showCallForSpeakers && (
+                        <Row>
+                          <Col
+                            className={`xs-12 ${
+                              !wideContent
+                                ? "rg-10 offset-rg-1 lg-8 offset-lg-2"
+                                : ""
+                            }`}
+                          >
+                            <AirtableForm
+                              title="Submit proposal"
+                              table="Call for Speakers"
+                            />
+                          </Col>
+                        </Row>
+                      )}
+                      {currentPage.showSpeakersForm && (
+                        <Row>
+                          <Col
+                            className={`xs-12 ${
+                              !wideContent
+                                ? "rg-10 offset-rg-1 lg-8 offset-lg-2"
+                                : ""
+                            }`}
+                          >
+                            <AirtableForm table="Invited Speakers" />
+                          </Col>
+                        </Row>
+                      )}
+                      {currentPage.showSpeakersFormWorkshop && (
+                        <Row>
+                          <Col
+                            className={`xs-12 ${
+                              !wideContent
+                                ? "rg-10 offset-rg-1 lg-8 offset-lg-2"
+                                : ""
+                            }`}
+                          >
+                            <AirtableForm table="Workshops" />
+                          </Col>
+                        </Row>
+                      )}
+                    </div>
                   </Container>
                 </div>
 
-                {currentPage.showSponsors && (
-                  <div className="content__wrapper content__wrapper--dark">
-                    <Container>
-                      <Row>
-                        <Col className="xs-12">
-                          <Sponsors />
-                        </Col>
-                      </Row>
-                    </Container>
-                  </div>
-                )}
+                {currentPage.showSponsors && <Sponsors />}
               </section>
             );
           case "content":
@@ -528,43 +514,27 @@ export default withRouter(({ router: { query } }) => {
                   lead={currentPage.lead}
                   ctas={ctas}
                 />
+
                 <Container>
-                  <Row>
-                    <Col className="xs-12">
-                      {currentPage.body && (
-                        <div className="markdown-wrapper">
-                          <Markdown options={{ forceBlock: true }}>
-                            {currentPage.body}
-                          </Markdown>
-                        </div>
-                      )}
+                  {currentPage.body && (
+                    <div className="markdown-wrapper">
+                      <Markdown options={{ forceBlock: true }}>
+                        {currentPage.body}
+                      </Markdown>
+                    </div>
+                  )}
 
-                      {currentPage.showNews && <NewsSummary />}
-                      {(currentPage.showSpeakers || isHome) && (
-                        <SpeakersList
-                          limit={isHome ? 6 : undefined}
-                          withHeading={isHome}
-                        />
-                      )}
-                      {currentPage.showVenue && (
-                        <VenueTeaser isVenue={isVenue} />
-                      )}
-                      {currentPage.showJobs && <Jobs />}
-                    </Col>
-                  </Row>
+                  {currentPage.showNews && <NewsSummary />}
+                  {(currentPage.showSpeakers || isHome) && (
+                    <SpeakersList
+                      limit={isHome ? 6 : undefined}
+                      withHeading={isHome}
+                    />
+                  )}
+                  {currentPage.showVenue && <VenueTeaser isVenue={isVenue} />}
+                  {currentPage.showJobs && <Jobs />}
+                  {currentPage.showSponsors && <Sponsors />}
                 </Container>
-
-                {currentPage.showSponsors && (
-                  <div className="content__wrapper content__wrapper--dark">
-                    <Container>
-                      <Row>
-                        <Col className="xs-12">
-                          <Sponsors />
-                        </Col>
-                      </Row>
-                    </Container>
-                  </div>
-                )}
               </section>
             );
         }

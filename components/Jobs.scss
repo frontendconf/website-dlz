@@ -33,12 +33,12 @@
 
   &__source {
     @include textSubline;
-    text-align: right;
-    margin: 15px 0 0;
+    text-align: center;
+    margin: px-to-rem(15) 0 0;
     width: 100%;
 
     @include mq-up(rg) {
-      margin-top: 20px;
+      margin-top: px-to-rem(20);
     }
   }
 
@@ -46,18 +46,19 @@
     flex: 1;
     display: inline-block;
     vertical-align: middle;
-    margin-left: 16px;
-    opacity: 0.4;
-    transition: opacity $transition-time-simple $transition-easing-default;
+    margin-left: px-to-rem(16);
 
     svg {
-      fill: #fff;
-      height: 24px;
+      fill: $grey;
+      height: px-to-rem(24);
+      transition: fill $transition-time-simple $transition-easing-default;
     }
 
     &:hover,
     &:focus {
-      opacity: 1;
+      svg {
+        fill: $navy;
+      }
     }
   }
 }

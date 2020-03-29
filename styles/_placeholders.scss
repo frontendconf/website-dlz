@@ -1,25 +1,25 @@
 %default-module-spacer {
-  margin-top: 80px;
-  margin-bottom: 80px;
+  margin-top: px-to-rem(60);
+  margin-bottom: px-to-rem(60);
 
   @include mq-up(rg) {
-    margin-top: 120px;
-    margin-bottom: 120px;
+    margin-top: px-to-rem(100);
+    margin-bottom: px-to-rem(100);
   }
 
   @include mq-up(lg) {
-    margin-top: 150px;
-    margin-bottom: 150px;
+    margin-top: px-to-rem(120);
+    margin-bottom: px-to-rem(120);
   }
 
   @include mq-up(xl) {
-    margin-top: 200px;
-    margin-bottom: 200px;
+    margin-top: px-to-rem(140);
+    margin-bottom: px-to-rem(140);
   }
 
   @include mq-up(xxl) {
-    margin-top: 220px;
-    margin-bottom: 240px;
+    margin-top: px-to-rem(160);
+    margin-bottom: px-to-rem(160);
   }
 }
 
@@ -39,22 +39,37 @@
 }
 
 %summary-title {
-  @include textGradient;
-  display: inline-block; // Necessary for the background-clip
-  font-size: 28px;
-  margin: 0 0 1em;
-  font-weight: $font-weight-medium;
+  flex: 1;
+  font-weight: $font-weight-bold;
+  font-size: px-to-rem(24);
+  line-height: 1.6;
+  text-align: center;
+  letter-spacing: 1px;
+  color: $navy;
+  text-shadow: 0 px-to-rem(4) px-to-rem(13) rgba(124, 103, 255, 0.4);
 
   @include mq-up(rg) {
-    font-size: 33px;
+    font-size: px-to-rem(28);
   }
 
   @include mq-up(lg) {
-    font-size: 38px;
+    font-size: px-to-rem(32);
   }
 
   @include mq-up(xl) {
-    font-size: 46px;
+    font-size: px-to-rem(42);
+  }
+}
+
+%summary-text {
+  color: $grey;
+  font-size: px-to-rem(18);
+  font-weight: $font-weight-bold;
+  line-height: 1.6;
+  letter-spacing: px-to-rem(1);
+
+  @include mq-up(md) {
+    font-size: px-to-rem(22);
   }
 }
 
@@ -64,56 +79,42 @@
 
 %summary-link {
   position: relative;
-  display: block;
-  background: #1e1631;
-  min-height: 120px;
-  padding: 18px 18px;
-  text-decoration: none;
+  display: flex;
   width: 100%;
-
-  &::after {
-    content: "";
-    position: absolute;
-    top: 2px;
-    right: -3px;
-    bottom: 2px;
-    left: 5px;
-    transform: rotate(-2deg);
-    background-color: $primary;
-    z-index: -1;
-    transition: background-color $transition-time-simple
-        $transition-easing-default,
-      transform $transition-time-simple $transition-easing-default;
-  }
-
-  &:hover,
-  &:focus {
-    &::after {
-      background-color: $secondary;
-      transform: rotate(-4deg);
-    }
-  }
+  min-height: px-to-rem(120);
+  text-decoration: none;
+  background: $primary;
+  border-radius: px-to-rem(6);
+  padding: px-to-rem(19) px-to-rem(20) px-to-rem(17);
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 %summary-link-title {
-  @include textGradient;
-  display: inline-block;
-  font-size: 20px;
-  line-height: 1.1;
-  margin-bottom: 9px;
+  display: block;
+  color: $white;
+  font-size: px-to-rem(22);
+  font-weight: $font-weight-bold;
+  line-height: 1.2;
+  margin-bottom: px-to-rem(6);
 }
 
 %summary-link-subtitle {
-  @include textSubline;
   display: block;
+  color: $white;
+  font-size: px-to-rem(13);
+  line-height: 1.6;
+  opacity: 0.6;
 }
 
+// TODO: Remove
 %image-skew {
   display: block;
   max-width: 100%;
   transform: rotate(-5deg);
 }
 
+// TODO: Remove
 %image-background {
   @include gradient;
   background-blend-mode: color;

@@ -4,7 +4,7 @@ import Markdown from "markdown-to-jsx";
 import gql from "graphql-tag";
 import Link from "next/link";
 import ErrorMessage from "./ErrorMessage";
-import { Row, Col } from "./shared/Grid";
+import { Container, Row, Col } from "./shared/Grid";
 import Truncate from "react-truncate";
 import FadeIn from "./FadeIn";
 
