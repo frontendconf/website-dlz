@@ -70,7 +70,7 @@
   }
 
   button {
-    @include buttonBig;
+    @include button;
     display: inline-block;
   }
 }

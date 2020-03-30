@@ -31,28 +31,48 @@ const ImageTeaser = ({ venueTeaser }) => (
         <div className="venue-teaser__image-wrapper">
           <Image
             className="venue-teaser__image"
-            src={`${venueTeaser.photo.url}&w=1000&h=1000`}
-            srcSet={`
-              ${venueTeaser.photo.url}&w=300&h=300 300w,
-              ${venueTeaser.photo.url}&w=400&h=400 400w,
-              ${venueTeaser.photo.url}&w=600&h=600 600w,
-              ${venueTeaser.photo.url}&w=800&h=800 800w,
-              ${venueTeaser.photo.url}&w=1000&h=1000 1000w,
-              ${venueTeaser.photo.url}&w=1200&h=1200 1200w
-            `}
-            sizes={`
-              (min-width: 1680px) 625px,
-              (min-width: 600px) 45vw,
-              95vw
-            `}
+            picture
+            sources={[
+              {
+                srcset: `
+                  ${venueTeaser.photo.url}&w=300&h=150 300w,
+                  ${venueTeaser.photo.url}&w=400&h=200 400w,
+                  ${venueTeaser.photo.url}&w=600&h=300 600w,
+                  ${venueTeaser.photo.url}&w=800&h=400 800w,
+                  ${venueTeaser.photo.url}&w=1000&h=500 1000w,
+                  ${venueTeaser.photo.url}&w=1200&h=600 1200w,
+                  ${venueTeaser.photo.url}&w=1400&h=700 1400w,
+                  ${venueTeaser.photo.url}&w=1600&h=800 1600w,
+                  ${venueTeaser.photo.url}&w=1800&h=900 1800w
+                `,
+                media: "(min-width: 768px)",
+                sizes: `
+                  (min-width: 1480px) 1480px,
+                  100vw
+                `
+              },
+              {
+                srcset: `
+                  ${venueTeaser.photo.url}&w=300&h=450 300w,
+                  ${venueTeaser.photo.url}&w=400&h=600 400w,
+                  ${venueTeaser.photo.url}&w=600&h=900 600w,
+                  ${venueTeaser.photo.url}&w=800&h=1200 800w,
+                  ${venueTeaser.photo.url}&w=1000&h=1500 1000w,
+                  ${venueTeaser.photo.url}&w=1200&h=1800 1200w,
+                  ${venueTeaser.photo.url}&w=1400&h=2100 1400w
+                `,
+                sizes: `100vw`
+              }
+            ]}
+            src={`${venueTeaser.photo.url}&w=1480&h=740`}
           />
-        </div>
-      </FadeIn>
-    </Col>
-    <Col className="xs-12 rg-5 offset-rg-1">
-      <FadeIn delay={150} style={{ alignItems: "center", height: "100%" }}>
-        <div className="markdown-wrapper">
-          <Markdown options={{ forceBlock: true }}>{venueTeaser.body}</Markdown>
+          <div className="venue-teaser__text">
+            <div className="markdown-wrapper">
+              <Markdown options={{ forceBlock: true }}>
+                {venueTeaser.body}
+              </Markdown>
+            </div>
+          </div>
         </div>
       </FadeIn>
     </Col>

@@ -148,7 +148,7 @@ class Header extends Component {
                       href={{ pathname: "/", query: { slug: "tickets" } }}
                       as="/tickets"
                     >
-                      <a className="btn btn--small">Buy tickets</a>
+                      <a className="header-btn">Buy tickets</a>
                     </Link>
                     {/* <Link
                       href={{

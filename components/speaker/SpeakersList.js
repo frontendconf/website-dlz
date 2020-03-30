@@ -114,7 +114,7 @@ class SpeakersList extends Component {
         </Query>
 
         {this.props.limit !== SpeakersList.defaultProps.limit ? (
-          <FadeIn>
+          <FadeIn style={{ justifyContent: "center" }}>
             <Link
               href={{ pathname: "/", query: { slug: "speakers" } }}
               as={"/speakers"}

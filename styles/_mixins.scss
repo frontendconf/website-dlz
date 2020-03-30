@@ -48,53 +48,47 @@
 // TODO: Refactor with variables
 // TODO: Add hover animation
 @mixin button {
-  @include gradient;
-  position: relative;
-  display: block;
-  font-size: 13px; // TODO: Font-size into variable
-  text-align: center;
-  color: #09001f; // TODO: Colors
-  padding: 13px 15px 11px;
-  border-radius: 100px;
+  display: inline-block;
+  color: $white;
+  background-color: $primary;
+  font-size: px-to-rem(13);
+  line-height: (14 / 13);
+  border-radius: px-to-rem(100);
   text-transform: uppercase;
-  line-height: 1.1;
+  text-align: center;
   border: 0 none;
   text-decoration: none;
-  cursor: pointer;
+  transition: background-color $transition-time-default
+    $transition-easing-default;
+  box-shadow: 0 px-to-rem(4) px-to-rem(13) rgba(124, 103, 255, 0.2);
 
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: $secondary;
-    border-radius: 100px;
-    z-index: -1;
-    transform: rotate(0deg);
-    opacity: 0;
-    transform-origin: right top;
-    transition: transform $transition-time-default $transition-easing-default,
-      opacity $transition-time-default $transition-easing-default;
+  padding: px-to-rem(12) px-to-rem(32);
+
+  &:hover,
+  &:focus {
+    background-color: rgba($primary, 0.8);
   }
 
-  &:hover {
-    &::before {
-      transform: rotate(-2deg);
-      opacity: 1;
-    }
+  @include mq-up(rg) {
+    padding: px-to-rem(15) px-to-rem(32);
+  }
+
+  @include mq-up(md) {
+    padding: px-to-rem(18) px-to-rem(32);
   }
 }
 
-@mixin buttonBig {
+@mixin buttonSmall {
   @include button;
-  font-size: 13px;
-  padding: 13px 15px 11px;
+
+  padding: px-to-rem(7) px-to-rem(14);
+
+  @include mq-up(rg) {
+    padding: px-to-rem(10) px-to-rem(24);
+  }
 
   @include mq-up(md) {
-    font-size: 15px;
-    padding: 23px 30px 21px;
+    padding: px-to-rem(12) px-to-rem(32);
   }
 }
 

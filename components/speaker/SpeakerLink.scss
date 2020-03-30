@@ -8,48 +8,54 @@
     &:hover,
     &:focus {
       .speaker__image {
-        @extend %link-image-hover;
+        filter: grayscale(0%);
       }
     }
   }
 
   &__image-wrapper {
-    @extend %image-background;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
   }
 
   &__image {
-    @extend %image-skew;
-    @extend %link-image;
+    padding-top: 100%;
+    border-radius: 100%;
+    filter: grayscale(100%);
+    transition: filter $transition-time-default $transition-easing-default;
   }
 
   &__name {
-    @include textGradient;
-    font-size: 18px;
-    line-height: 1;
-    margin: 0 0 5px;
+    margin: 0 0 15px;
+    font-weight: $font-weight-bold;
+    font-size: px-to-rem(16);
+    line-height: 1.1;
+    text-align: center;
+    color: $navy;
+    text-shadow: 0px 4px 13px rgba(124, 103, 255, 0.4);
   }
 
   // TODO: Refactor with variables & cleanup
   &__description {
-    font-size: $font-size-tiny;
-    color: #b3b3bc;
-    text-transform: uppercase;
     margin: 0;
+    font-size: px-to-rem(10);
+    color: $grey;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1.6;
   }
 
   @include mq-up(rg) {
     &__image-wrapper {
-      margin-bottom: 50px;
+      margin-bottom: 35px;
     }
 
     &__name {
-      font-size: 28px;
-      margin: 0 0 15px;
+      font-size: px-to-rem(28);
+      margin: 0 0 px-to-rem(22);
     }
 
     &__description {
-      font-size: $font-size-small;
+      font-size: px-to-rem(13);
     }
   }
 }

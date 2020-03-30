@@ -138,3 +138,29 @@
   font-size: 26px;
   margin: 0 0 15px;
 }
+
+%container-reset {
+  // Resetting Side Magins of the container, up to 1480px
+  margin-right: px-to-rem(-16);
+  margin-left: px-to-rem(-16);
+
+  @include mq-up(sm) {
+    margin-right: px-to-rem(-32);
+    margin-left: px-to-rem(-32);
+  }
+
+  @include mq-up(rg) {
+    margin-right: px-to-rem(-48);
+    margin-left: px-to-rem(-48);
+  }
+
+  @include mq-up(md) {
+    margin-right: px-to-rem(-64);
+    margin-left: px-to-rem(-64);
+  }
+
+  @include mq-up(xl) {
+    margin-right: px-to-rem(-100);
+    margin-left: px-to-rem(-100);
+  }
+}

@@ -119,7 +119,9 @@ class Image extends Component {
               />
             ))}
             <img
-              className={`image__image`}
+              className={`image__image${
+                this.state.loaded ? " is-loaded" : ""
+              } js-only`}
               ref={this.image}
               src={this.props.src}
               alt={this.props.alt}
@@ -156,6 +158,8 @@ class Image extends Component {
 }
 
 Image.propTypes = {
+  picture: PropTypes.bool,
+  sources: PropTypes.array,
   src: PropTypes.string,
   srcSet: PropTypes.string,
   sizes: PropTypes.string,
