@@ -54,7 +54,7 @@
 
 .hero {
   height: auto;
-  padding: 90px 0 0;
+  padding: 0 0 60px;
   max-width: 100vw;
   overflow: hidden;
 
@@ -76,7 +76,6 @@
   &__inner {
     display: block;
     padding-top: 30px;
-    padding-bottom: 60px;
   }
 
   &__title-wrapper {
@@ -84,21 +83,27 @@
   }
 
   &__title {
-    @include textGradient;
-    font-weight: $font-weight-medium;
-    letter-spacing: #{- (1em / 20em)}em;
-    margin: 0 0 40px;
+    @include title();
+    font-weight: $font-weight-bold;
+    text-transform: uppercase;
+    letter-spacing: -1px;
     animation: moveIn $transition-time-title-in;
+    margin-bottom: 0;
 
     @include fontSizeAndLineHeight(
-      px-to-rem(35),
+      px-to-rem(40),
       px-to-rem(45),
+      px-to-rem(50),
       px-to-rem(60),
+      px-to-rem(70),
       px-to-rem(85),
-      px-to-rem(95),
-      px-to-rem(120),
-      px-to-rem(128)
+      px-to-rem(90)
     );
+
+    &::after {
+      content: "–";
+      display: block;
+    }
   }
 
   &__title--in-reverse {
@@ -116,14 +121,27 @@
     animation: moveOutReverse $transition-time-title-out;
   }
 
+  &__subtitle,
   &__lead {
-    opacity: 0.6;
-    font-size: 18px;
+    font-weight: $font-weight-bold;
     line-height: 1.67;
+    letter-spacing: 1px;
+    text-align: center;
+  }
+
+  &__lead {
+    font-size: px-to-em(13);
+    margin-bottom: 30px;
+  }
+
+  &__subtitle {
+    font-size: px-to-em(22);
   }
 
   &__ctas-wrapper {
     padding-bottom: 30px;
+    margin-top: 45px;
+    text-align: center;
   }
 
   &__cta {
@@ -138,7 +156,6 @@
 
   @include mq-up(rg) {
     height: auto;
-    padding: 130px 0 0;
 
     &__ctas-wrapper {
       padding-bottom: 55px;
@@ -146,7 +163,6 @@
   }
 
   @include mq-up(md) {
-    padding: 150px 0 0;
     height: calc(100vh - 300px);
     min-height: 770px;
 
@@ -158,11 +174,8 @@
       padding-top: 70px;
     }
 
-    &__title {
-      margin: 0 0 76px;
-    }
-
     &__ctas-wrapper {
+      margin-top: 60px;
       padding-bottom: 80px;
     }
 
@@ -174,14 +187,8 @@
   }
 
   @include mq-up(lg) {
-    min-height: 1000px;
-
     &__inner {
       padding-top: 110px;
-    }
-
-    &__title {
-      margin: 0 0 76px;
     }
   }
 }

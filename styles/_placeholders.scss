@@ -39,14 +39,11 @@
 }
 
 %summary-title {
+  @include title();
   flex: 1;
-  font-weight: $font-weight-bold;
   font-size: px-to-rem(24);
   line-height: 1.6;
-  text-align: center;
   letter-spacing: 1px;
-  color: $navy;
-  text-shadow: 0 px-to-rem(4) px-to-rem(13) rgba(124, 103, 255, 0.4);
 
   @include mq-up(rg) {
     font-size: px-to-rem(28);
