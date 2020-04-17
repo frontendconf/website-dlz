@@ -6,6 +6,7 @@ import Markdown from "markdown-to-jsx";
 import { Row, Col } from "./shared/Grid";
 import FadeIn from "./FadeIn";
 import Image from "./Image";
+import React, { Component } from "react";
 
 const teaserQuery = gql`
   query {
