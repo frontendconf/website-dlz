@@ -89,6 +89,7 @@
     letter-spacing: -1px;
     animation: moveIn $transition-time-title-in;
     margin-bottom: 0;
+    margin-top: 30px;
 
     @include fontSizeAndLineHeight(
       px-to-rem(40),
@@ -156,10 +157,6 @@
 
   @include mq-up(rg) {
     height: auto;
-
-    &__ctas-wrapper {
-      padding-bottom: 55px;
-    }
   }
 
   @include mq-up(md) {
@@ -175,7 +172,6 @@
     }
 
     &__ctas-wrapper {
-      margin-top: 60px;
       padding-bottom: 80px;
     }
 
