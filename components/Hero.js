@@ -3,6 +3,11 @@ import FadeIn from "./FadeIn";
 import { Container, Row, Col } from "./shared/Grid";
 import React, { Component } from "react";
 
+import dynamic from "next/dynamic";
+const CircleSector = dynamic(() => import("./CircleSection"), {
+  ssr: false
+});
+
 // Get index of the node within parent
 const getNodeindex = elm => {
   const c = elm.parentNode.children;
@@ -93,6 +98,13 @@ class Hero extends Component {
         }
       >
         <Container className="hero__container">
+          <CircleSector x="5" y="20" />
+          <CircleSector x="80" y="35" />
+          <CircleSector x="85" y="40" />
+          <CircleSector x="40" y="70" />
+          <CircleSector x="8" y="80" />
+          <CircleSector x="2" y="90" />
+          <CircleSector x="90" y="95" />
           <Row className="hero__container">
             <Col className="hero__col xs-12 offset-lg-1 lg-10 offset-xl-2 xl-8">
               <div className="hero__inner">
