@@ -58,7 +58,7 @@ class Hero extends Component {
     return (
       <div className="scene hero-bg__wrapper">
         <div
-          data-depth="0.2"
+          data-depth="0.05"
           className={`hero-bg ${
             this.props.template ? `hero-bg--${this.props.template}` : ""
           }`}
@@ -74,6 +74,25 @@ class Hero extends Component {
             <CircleSector x="8" y="80" />
             <CircleSector x="2" y="90" />
             <CircleSector x="90" y="95" />
+          </div>
+        </div>
+        <div
+          data-depth="-0.3"
+          className={`hero-bg ${
+            this.props.template ? `hero-bg--${this.props.template}` : ""
+          }`}
+        >
+          <div
+            className="hero-bg__overlay"
+            style={{ opacity: this.state.opacity }}
+          >
+            <CircleSector x="5" y="20" />
+            <CircleSector x="60" y="35" />
+            <CircleSector x="85" y="50" />
+            <CircleSector x="30" y="70" />
+            <CircleSector x="8" y="60" />
+            <CircleSector x="20" y="10" />
+            <CircleSector x="50" y="95" />
           </div>
         </div>
       </div>
