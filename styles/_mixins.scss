@@ -67,7 +67,7 @@
   text-decoration: none;
   transition: background-color $transition-time-default
     $transition-easing-default;
-  box-shadow: 0 px-to-rem(4) px-to-rem(13) rgba(124, 103, 255, 0.2);
+  box-shadow: $shadow-purple;
 
   padding: px-to-rem(12) px-to-rem(32);
 
