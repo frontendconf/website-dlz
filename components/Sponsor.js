@@ -102,7 +102,7 @@ export default function Sponsor({ details = false, item = {} }) {
           dangerouslySetInnerHTML={{
             __html: item.logoSvg
           }}
-          style={item.category.color ? { fill: item.category.color } : {}}
+          // style={item.category.color ? { fill: item.category.color } : {}}
         />
       ) : item.logo ? (
         <img className="sponsor__img" src={item.logo.url} alt={item.title} />
