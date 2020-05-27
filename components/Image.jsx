@@ -109,13 +109,14 @@ class Image extends Component {
         <span className="image__loader" />
         {this.props.picture ? (
           <picture>
-            {this.props.sources.map(source => (
+            {this.props.sources.map((source, i) => (
               <source
+                key={i}
                 srcSet={source.srcset}
-                data-srcset={source.dataSrcset || false}
-                type={source.type || false}
-                media={source.media || false}
-                sizes={source.sizes || false}
+                data-srcset={source.dataSrcset || undefined}
+                type={source.type || undefined}
+                media={source.media || undefined}
+                sizes={source.sizes || undefined}
               />
             ))}
             <img

@@ -10,15 +10,15 @@
 }
 
 .sponsor-category h3 {
-  @include textGradient();
+  @extend %summary-title;
+
   font-weight: 400;
   margin: 0 0 30px;
   font-size: 22px;
-  text-transform: uppercase;
+}
 
-  @include mq-up(rg) {
-    font-size: 28px;
-  }
+.sponsor-category .row {
+  justify-content: center;
 }
 
 .sponsor-category--detail {

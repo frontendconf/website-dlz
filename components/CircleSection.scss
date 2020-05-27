@@ -1,0 +1,17 @@
+.circle-section {
+  position: fixed;
+}
+
+.circle-section__circle {
+  transition: stroke-dashoffset 0.35s;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+
+.circle-section__circle--primary {
+  stroke: #7c67ff;
+}
+
+.circle-section__circle--secondary {
+  stroke: #67ffd1;
+}

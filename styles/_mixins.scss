@@ -21,6 +21,13 @@
   background-image: linear-gradient(to right, rgba($white, 0.7), $primary);
 }
 
+@mixin title {
+  font-weight: $font-weight-bold;
+  text-align: center;
+  color: $navy;
+  text-shadow: 0 px-to-rem(4) px-to-rem(13) rgba(124, 103, 255, 0.4);
+}
+
 @mixin textGradient {
   @include gradient;
   color: transparent;
@@ -60,7 +67,7 @@
   text-decoration: none;
   transition: background-color $transition-time-default
     $transition-easing-default;
-  box-shadow: 0 px-to-rem(4) px-to-rem(13) rgba(124, 103, 255, 0.2);
+  box-shadow: $shadow-purple;
 
   padding: px-to-rem(12) px-to-rem(32);
 
