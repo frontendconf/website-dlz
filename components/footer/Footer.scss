@@ -1,11 +1,12 @@
 @import "./components/FooterMenu";
 @import "./components/Newsletter";
 @import "./components/SocialIcons";
+@import "./components/Contributors";
 
 .footer {
   position: relative;
   padding: 35px 0;
-  background-color: #1e1732;
+  background-color: $light-grey;
   z-index: 2;
 
   &__newsletter,
@@ -31,7 +32,7 @@
 
 // Refactor to its own component
 .ctas__link {
-  @include button;
+  @include buttonSmall($grey);
   @include mq-up(md) {
     margin-bottom: 10px;
   }
@@ -44,14 +45,18 @@
   justify-content: space-between;
 
   &__text {
-    font-size: 12px;
-    letter-spacing: 0.9px;
     text-align: center;
-    color: #b3b3bc;
-    opacity: 0.5;
     margin: 0;
+
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: (17 / 14);
+
+    text-align: center;
+    letter-spacing: 1.07692px;
     text-transform: uppercase;
-    line-height: 1.1;
+    color: $navy;
   }
 
   @include mq-up(md) {

@@ -4,7 +4,7 @@ export default function Newsletter(props) {
       <h3>Sign up for the newsletter</h3>
       <form
         className="newsletter__form"
-        action="//frontendconf.us2.list-manage.com/subscribe/post?u=d6e0840333568eaec22d009ab&amp;id=d822473667"
+        action="//frontendconf.us2.list-manage.com/subscribe/post?u=d6e0840333568eaec22d009ab&amp;id=7aee963618"
         method="post"
         id="mc-embedded-subscribe-form"
         name="mc-embedded-subscribe-form"

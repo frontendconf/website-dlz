@@ -1,8 +1,10 @@
 .newsletter h3 {
-  @include textGradient();
-  font-size: 20px;
   font-weight: $font-weight-medium;
+  font-size: 14px;
+  line-height: 1.6;
+  letter-spacing: 1px;
   margin: 0 0 20px;
+  color: $navy;
 }
 
 .newsletter__form {
@@ -14,19 +16,18 @@
 }
 
 .newsletter__input {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: $white;
   border-radius: 25px;
   height: 46px;
   padding: 0 90px 0 22px;
   border: 0;
   width: 100%;
   font-size: 16px;
-  color: rgba(255, 255, 255, 0.5);
-  // TODO: placeholder color
+  color: $navy;
 }
 
 .newsletter__submit {
-  @include button;
+  @include buttonSmall($grey);
   position: absolute;
   top: 4px;
   right: 4px;

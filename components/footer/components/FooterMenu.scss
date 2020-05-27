@@ -13,11 +13,14 @@
 
   &__link {
     display: block;
-    font-size: 12px;
-    letter-spacing: 0.9px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: (17 / 14);
     text-align: center;
-    color: #b3b3bc;
+    letter-spacing: 1.07692px;
     text-transform: uppercase;
+    color: $navy;
     text-decoration: none;
   }
 
@@ -25,19 +28,22 @@
   &--social {
     .menu__link {
       display: block;
+      font-style: normal;
+      font-weight: normal;
       font-size: 14px;
-      line-height: 1.1;
-      letter-spacing: 1px;
-      color: #b3b3bc;
+      line-height: (17 / 14);
+      text-align: center;
+      letter-spacing: 1.07692px;
       text-transform: uppercase;
+      color: $navy;
       text-decoration: none;
       padding: 6px 0;
       text-align: left;
-      transition: color $transition-time-simple $transition-easing-default;
+      transition: opacity $transition-time-simple $transition-easing-default;
 
       &:hover,
       &:focus {
-        color: white;
+        opacity: 0.7;
       }
     }
   }

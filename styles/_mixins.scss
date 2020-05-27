@@ -47,10 +47,10 @@
 
 // TODO: Refactor with variables
 // TODO: Add hover animation
-@mixin button {
+@mixin button($background: $primary, $color: $white) {
   display: inline-block;
-  color: $white;
-  background-color: $primary;
+  color: $color;
+  background-color: $background;
   font-size: px-to-rem(13);
   line-height: (14 / 13);
   border-radius: px-to-rem(100);
@@ -66,7 +66,7 @@
 
   &:hover,
   &:focus {
-    background-color: rgba($primary, 0.8);
+    background-color: rgba($background, 0.8);
   }
 
   @include mq-up(rg) {
@@ -78,8 +78,8 @@
   }
 }
 
-@mixin buttonSmall {
-  @include button;
+@mixin buttonSmall($background: $primary, $color: $white) {
+  @include button($background, $color);
 
   padding: px-to-rem(7) px-to-rem(14);
 
@@ -90,6 +90,9 @@
   @include mq-up(md) {
     padding: px-to-rem(12) px-to-rem(32);
   }
+}
+
+@mixin buttonColorGrey {
 }
 
 @mixin mq-up($breakpoint) {

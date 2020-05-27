@@ -4,7 +4,7 @@
   &__col {
     display: flex;
     justify-content: center;
-    margin-bottom: 45px;
+    margin-bottom: 60px;
 
     &:nth-child(2n + 1) {
       .speakers-list__speaker {
@@ -79,7 +79,7 @@
 
   @include mq-up(md) {
     &__col {
-      margin-bottom: 40px;
+      margin-bottom: 80px;
 
       // TODO: handle responsiveness
       // &:nth-child(3n + 1) {
@@ -109,13 +109,19 @@
 
     &__title {
       &--hosts {
-        margin-top: 100px;
+        margin-top: 40px;
       }
     }
 
     &__speaker {
       max-width: calc(100% - 40px);
       flex: 0 1 290px;
+    }
+  }
+
+  @include mq-up(lg) {
+    &__col {
+      margin-bottom: 100px;
     }
   }
 }

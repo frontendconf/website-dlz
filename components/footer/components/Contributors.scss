@@ -1,0 +1,32 @@
+.contributors {
+  margin: 0 0 35px;
+  flex: 1;
+}
+
+@media (min-width: 768px) {
+  .contributors {
+    margin: 0 0 90px;
+  }
+}
+
+.contributors h3 {
+  color: $navy;
+  font-weight: 400;
+  margin: 0 0 30px;
+  font-size: 22px;
+  text-transform: uppercase;
+
+  @include mq-up(rg) {
+    font-size: 28px;
+  }
+}
+
+// .contributors {
+//   h3 {
+//     color: $navy;
+//   }
+// }
+
+.contributors__item {
+  display: flex;
+}
