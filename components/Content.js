@@ -340,11 +340,7 @@ export default withRouter(({ router: { query } }) => {
                       {currentPage.body && (
                         <Row>
                           <Col
-                            className={`xs-12 ${
-                              !wideContent
-                                ? "rg-10 offset-rg-1 lg-8 offset-lg-2"
-                                : ""
-                            }`}
+                            className={`xs-12 rg-10 offset-rg-1 lg-8 offset-lg-2`}
                           >
                             <div className="markdown-wrapper markdown-wrapper--list">
                               <Markdown options={{ forceBlock: true }}>
@@ -423,16 +419,22 @@ export default withRouter(({ router: { query } }) => {
                 className={loading ? "content content--loading" : "content"}
               >
                 <CustomHead />
-                <Hero
+                {/* <Hero
                   title={title}
                   subTitle={subTitle}
                   lead={currentPage.lead}
                   ctas={ctas}
                   template={template}
-                />
+                /> */}
 
                 <div className="content__wrapper content__wrapper--white">
-                  <Backlink {...backLink} />
+                  <Container>
+                    <Row>
+                      <Col className="xs-12">
+                        <Backlink {...backLink} />
+                      </Col>
+                    </Row>
+                  </Container>
 
                   {isSpeaker || isHost ? (
                     <Container>

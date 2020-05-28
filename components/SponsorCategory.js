@@ -36,7 +36,7 @@ const sponsorsQuery = gql`
 `;
 
 export default function SponsorCategory({
-  category = "CONTRIBUTING",
+  category = "Contributing",
   title,
   filterTag = "FRONT20",
   details = false

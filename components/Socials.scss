@@ -2,6 +2,7 @@
   &__list {
     @extend %unstyled-list;
     display: flex;
+    justify-content: center;
 
     &-item {
       &:not(:last-child) {

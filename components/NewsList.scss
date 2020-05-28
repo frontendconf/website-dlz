@@ -20,12 +20,12 @@
     text-decoration: none;
     font-size: 26px;
     font-weight: $font-weight-bold;
-    // color: map_get($colors, "link");
+    color: $link-color;
   }
 
   &__more {
     @include link;
-    padding-left: 15px;
+    display: block;
   }
 
   &__meta {
@@ -42,7 +42,7 @@
     display: inline-flex;
     justify-content: flex-start;
     flex-wrap: wrap;
-    // color: map_get($colors, "link");
+    color: $link-color;
     max-width: 100%;
   }
 

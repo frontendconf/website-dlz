@@ -11,21 +11,13 @@
 
 .contributors h3 {
   color: $navy;
-  font-weight: 400;
-  margin: 0 0 30px;
+  font-weight: bold;
   font-size: 22px;
-  text-transform: uppercase;
-
-  @include mq-up(rg) {
-    font-size: 28px;
-  }
+  line-height: 1.6;
+  text-align: center;
+  letter-spacing: 1px;
+  flex: 0 0 100%;
 }
-
-// .contributors {
-//   h3 {
-//     color: $navy;
-//   }
-// }
 
 .contributors__item {
   display: flex;

@@ -16,13 +16,13 @@ body {
 h1,
 %h1 {
   font-weight: $font-weight-bold;
-  // font-size: 28px;
-  // font-weight: $font-weight-medium;
-  // margin: 0 0 35px;
+  color: $navy;
+  font-size: 28px;
+  margin: 0 0 35px;
 
-  // @include mq-up(md) {
-  //   font-size: 42px;
-  // }
+  @include mq-up(md) {
+    font-size: 42px;
+  }
 }
 
 h2,
@@ -46,103 +46,105 @@ h3,
 
 p {
   font-size: $font-size-bigger-small;
-  // line-height: 1.44;
-  // letter-spacing: -0.1px;
-  // margin: 0 0 1em;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: 0.5px;
 
-  // @include mq-up(md) {
-  //   font-size: $font-size-regular;
-  //   letter-spacing: -0.2px;
-  // }
+  @include mq-up(md) {
+    font-size: $font-size-regular;
+    letter-spacing: 1px;
+  }
 }
 
-// .markdown-wrapper {
-//   h2 {
-//     .content__wrapper--white & {
-//       color: $navy;
-//     }
-//   }
+.markdown-wrapper {
+  h2 {
+    .content__wrapper--white & {
+      color: $navy;
+    }
+  }
 
-//   h3 {
-//     margin-top: 40px;
-//   }
+  h3 {
+    margin-top: 40px;
+  }
 
-//   a {
-//     @include link;
-//   }
+  a {
+    @include link;
+  }
 
-//   img,
-//   .video {
-//     margin: 50px 0;
-//   }
+  img,
+  .video {
+    margin: 50px 0;
+  }
 
-//   img {
-//     display: inline-block;
-//     max-width: 100%;
-//   }
+  img {
+    display: inline-block;
+    max-width: 100%;
+  }
 
-//   ul {
-//     padding: 0;
-//     margin: 34px 0;
-//     list-style: none;
-//   }
+  ul {
+    padding: 0;
+    margin: 34px 0;
+    list-style: none;
+  }
 
-//   li {
-//     position: relative;
-//     padding-left: 37px;
+  li {
+    position: relative;
+    padding-left: 37px;
 
-//     &::before {
-//       content: "•";
-//       position: absolute;
-//       left: 13px;
-//     }
-//   }
+    &::before {
+      color: $purple;
+      content: "—";
+      position: absolute;
+      left: 13px;
+    }
+  }
 
-//   li,
-//   th,
-//   td {
-//     font-size: 18px;
-//     margin-bottom: 1em;
-//   }
+  li,
+  th,
+  td {
+    font-size: 18px;
+    margin-bottom: 1em;
+  }
 
-//   th,
-//   td {
-//     margin-bottom: 0;
-//     padding-right: 1em;
-//     padding-bottom: 1em;
-//   }
+  th,
+  td {
+    margin-bottom: 0;
+    padding-right: 1em;
+    padding-bottom: 1em;
+  }
 
-//   // Ugly, but it works
-//   > *:first-child,
-//   > div > *:first-child {
-//     margin-top: 0 !important;
-//   }
+  // Ugly, but it works
+  > *:first-child,
+  > div > *:first-child {
+    margin-top: 0 !important;
+  }
 
-//   &--list {
-//     h2 {
-//       @extend %summary-title;
-//       margin-top: 70px;
-//     }
-//   }
+  &--list {
+    h2 {
+      @extend %summary-title;
+      margin-top: 70px;
+    }
+  }
 
-//   @include mq-up(md) {
-//     .board {
-//       ul {
-//         display: flex;
-//         flex-wrap: wrap;
-//       }
+  @include mq-up(md) {
+    .board {
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+      }
 
-//       li {
-//         flex: 0 0 50%;
-//       }
-//     }
-//   }
+      li {
+        flex: 0 0 50%;
+      }
+    }
+  }
 
-//   @include mq-up(xl) {
-//     .board {
-//       li {
-//         flex: 0 0 33.3333%;
-//       }
-//     }
-//   }
-// }
+  @include mq-up(xl) {
+    .board {
+      li {
+        flex: 0 0 33.3333%;
+      }
+    }
+  }
+}

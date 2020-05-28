@@ -33,4 +33,9 @@
   right: 4px;
   padding-left: 25px;
   padding-right: 25px;
+
+  @include mq-down(sm) {
+    top: 9px;
+    right: 9px;
+  }
 }

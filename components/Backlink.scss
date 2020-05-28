@@ -21,12 +21,14 @@
     width: $logo-size-xs;
     border-radius: 100px;
     margin-right: 14px;
-    background-color: $navy;
+    background-color: $purple;
     align-items: center;
     justify-content: center;
   }
 
   &__icon {
+    position: relative;
+    top: px-to-rem(-3px);
     flex: 0 0 auto;
     color: #fff;
     transition: transform $transition-time-area-small $transition-easing-default;
