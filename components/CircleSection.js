@@ -4,43 +4,82 @@ class CircleSector extends Component {
   constructor(props) {
     super(props);
 
+    this.progressTarget = Math.ceil(Math.random() * 3) * 25;
+
+    const stroke = Math.floor(Math.random() * 15) + 5;
+    const radius = Math.floor(Math.random() * 35) + 15 + 2 * stroke;
+    const normalizedRadius = radius - stroke * 2;
+    const circumference = normalizedRadius * 2 * Math.PI;
+
     this.state = {
-      progress: 0
+      progress: 0,
+      stroke,
+      radius,
+      normalizedRadius,
+      circumference
     };
-    this.stroke = Math.floor(Math.random() * 15) + 5; // border size between 5 - 20
-    this.radius = Math.floor(Math.random() * 35) + 15 + 2 * this.stroke; // radius between 10 - 40
-    this.progressTarget = Math.ceil(Math.random() * 3) * 25; // Progress either 25, 50 or 75
+
     this.colorIndex = Math.floor(Math.random() * 2);
     this.rotation = Math.ceil(Math.random() * 4) * 90;
     const colors = ["primary", "secondary"];
     this.color = colors[this.colorIndex];
-    this.normalizedRadius = this.radius - this.stroke * 2;
-    this.circumference = this.normalizedRadius * 2 * Math.PI;
   }
 
   componentDidMount() {
-    this.setState({ progress: 0 });
+    this.setState({
+      ...this.state,
+      progress: 0
+    });
 
-    const interval = setInterval(() => {
+    this.interval = setInterval(() => {
       this.setState({ progress: this.state.progress + 1 });
       if (
         this.progressTarget <= this.state.progress ||
         this.state.progress > 100
       )
-        clearInterval(interval);
+        clearInterval(this.interval);
     }, 1000 / this.progressTarget);
+
+    this.timeout = setTimeout(() => {
+      this.changeCircle();
+    }, Math.floor(Math.random() * 15000) + 3000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
+    clearTimeout(this.timeout);
+  }
+
+  changeCircle() {
+    const stroke = Math.floor(Math.random() * 15) + 5;
+    const radius = Math.floor(Math.random() * 35) + 15 + 2 * stroke;
+    const normalizedRadius = radius - stroke * 2;
+    const circumference = normalizedRadius * 2 * Math.PI;
+
+    this.setState({
+      ...this.state,
+      stroke,
+      radius,
+      normalizedRadius,
+      circumference
+    });
+
+    this.timeout = setTimeout(() => {
+      this.changeCircle();
+    }, Math.floor(Math.random() * 15000) + 3000);
   }
 
   render() {
     const { x, y } = this.props;
     let strokeDashoffset =
-      this.circumference - (this.state.progress / 100) * this.circumference;
-    if (isNaN(strokeDashoffset)) strokeDashoffset = this.circumference;
+      this.state.circumference -
+      (this.state.progress / 100) * this.state.circumference;
+    if (isNaN(strokeDashoffset)) strokeDashoffset = this.state.circumference;
     const divStyle = { left: `${x}vw`, top: `${y}vh` };
     const className = `circle-section__circle circle-section__circle--${this.color}`;
     return (
       <div className="circle-section" style={divStyle}>
-        <svg height={this.radius * 2} width={this.radius * 2}>
+        <svg height={this.state.radius * 2} width={this.state.radius * 2}>
           <filter id="f1">
             <feGaussianBlur result="blurOut" in="offOut" stdDeviation="1" />
             <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
@@ -49,15 +88,17 @@ class CircleSector extends Component {
             className={className}
             stroke={this.color}
             fill="transparent"
-            strokeWidth={this.stroke}
-            r={this.normalizedRadius}
-            strokeDasharray={this.circumference + " " + this.circumference}
+            strokeWidth={this.state.stroke}
+            r={this.state.normalizedRadius}
+            strokeDasharray={
+              this.state.circumference + " " + this.state.circumference
+            }
             style={{
               strokeDashoffset,
               transform: `rotate(${this.rotation}deg)`
             }}
-            cx={this.radius}
-            cy={this.radius}
+            cx={this.state.radius}
+            cy={this.state.radius}
           />
         </svg>
       </div>
