@@ -3,15 +3,19 @@
 }
 
 .circle-section__circle {
-  transition: stroke-dashoffset 0.35s;
-  transform: rotate(-90deg);
+  transition: all 1.5s cubic-bezier(0.22, 0.88, 0.28, 1);
+  // transform: rotate(-90deg);
   transform-origin: 50% 50%;
+  // opacity: .8;
+  mix-blend-mode: multiply;
 }
 
 .circle-section__circle--primary {
   stroke: #7c67ff;
+  // stroke: darken(#7c67ff, 10);
 }
 
 .circle-section__circle--secondary {
   stroke: #67ffd1;
+  // stroke: darken(#67ffd1, 10);
 }

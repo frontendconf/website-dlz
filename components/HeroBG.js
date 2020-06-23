@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Parallax from "parallax-js";
 import dynamic from "next/dynamic";
-const CircleSector = dynamic(() => import("./CircleSection"), {
+const CircleSection = dynamic(() => import("./CircleSection"), {
   ssr: false
 });
 
@@ -67,32 +67,13 @@ class Hero extends Component {
             className="hero-bg__overlay"
             style={{ opacity: this.state.opacity }}
           >
-            <CircleSector x="5" y="20" />
-            <CircleSector x="80" y="35" />
-            <CircleSector x="85" y="40" />
-            <CircleSector x="40" y="70" />
-            <CircleSector x="8" y="80" />
-            <CircleSector x="2" y="90" />
-            <CircleSector x="90" y="95" />
-          </div>
-        </div>
-        <div
-          data-depth="-0.3"
-          className={`hero-bg ${
-            this.props.template ? `hero-bg--${this.props.template}` : ""
-          }`}
-        >
-          <div
-            className="hero-bg__overlay"
-            style={{ opacity: this.state.opacity }}
-          >
-            <CircleSector x="5" y="20" />
-            <CircleSector x="60" y="35" />
-            <CircleSector x="85" y="50" />
-            <CircleSector x="30" y="70" />
-            <CircleSector x="8" y="60" />
-            <CircleSector x="20" y="10" />
-            <CircleSector x="50" y="95" />
+            <CircleSection x="5" y="11" baseRadius={30} color="secondary" />
+            <CircleSection x="80" y="20" baseRadius={50} color="primary" />
+            <CircleSection x="83" y="23" baseRadius={30} color="secondary" />
+            <CircleSection x="40" y="60" baseRadius={30} color="primary" />
+            <CircleSection x="8" y="70" baseRadius={30} color="secondary" />
+            <CircleSection x="2" y="80" baseRadius={30} color="primary" />
+            <CircleSection x="90" y="85" baseRadius={30} color="primary" />
           </div>
         </div>
       </div>

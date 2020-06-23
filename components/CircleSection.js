@@ -1,104 +1,96 @@
 import React, { Component } from "react";
 
-class CircleSector extends Component {
+const minRadius = -10;
+const maxRadius = 10;
+
+const minStrokeWidth = 5;
+const maxStrokeWidth = 34;
+
+const minCircumference = 25; // %
+const maxCircumference = 75; // %
+
+const minRotationAnimation = 120; // deg
+const maxRotationAnimation = 180; // deg
+
+const directions = ["left", "right"];
+
+const minMax = (min, max) => {
+  return Math.round(Math.random() * (max - min)) + min;
+};
+
+class CircleSection extends Component {
   constructor(props) {
     super(props);
 
-    this.progressTarget = Math.ceil(Math.random() * 3) * 25;
+    const { baseRadius } = props;
 
-    const stroke = Math.floor(Math.random() * 15) + 5;
-    const radius = Math.floor(Math.random() * 35) + 15 + 2 * stroke;
-    const normalizedRadius = radius - stroke * 2;
-    const circumference = normalizedRadius * 2 * Math.PI;
+    // 50:50 chance for direction to go left or right
+    this.direction = directions[Math.floor(Math.random() * 2)];
+
+    const rotation = minMax(0, 360);
+    const strokeWidth = minMax(minStrokeWidth, maxStrokeWidth);
+    const radius =
+      minMax(baseRadius + minRadius, baseRadius + maxRadius) + strokeWidth;
+    const circumference = radius * 2 * Math.PI;
+    const strokeDashoffset =
+      this.direction === "left" ? -circumference : circumference;
 
     this.state = {
-      progress: 0,
-      stroke,
+      strokeWidth,
       radius,
-      normalizedRadius,
-      circumference
+      rotation,
+      circumference,
+      strokeDashoffset
     };
-
-    this.colorIndex = Math.floor(Math.random() * 2);
-    this.rotation = Math.ceil(Math.random() * 4) * 90;
-    const colors = ["primary", "secondary"];
-    this.color = colors[this.colorIndex];
   }
 
   componentDidMount() {
-    this.setState({
-      ...this.state,
-      progress: 0
+    // After mounting with initial values, animation can be triggered
+    const strokeDashoffset =
+      (this.state.circumference / 100) *
+      minMax(minCircumference, maxCircumference);
+    const targetRotation = minMax(minRotationAnimation, maxRotationAnimation);
+
+    requestAnimationFrame(() => {
+      this.setState({
+        ...this.state,
+        strokeDashoffset:
+          this.direction === "left" ? -strokeDashoffset : strokeDashoffset,
+        rotation:
+          this.direction === "left"
+            ? this.state.rotation - targetRotation
+            : this.state.rotation + targetRotation
+      });
     });
-
-    this.interval = setInterval(() => {
-      this.setState({ progress: this.state.progress + 1 });
-      if (
-        this.progressTarget <= this.state.progress ||
-        this.state.progress > 100
-      )
-        clearInterval(this.interval);
-    }, 1000 / this.progressTarget);
-
-    this.timeout = setTimeout(() => {
-      this.changeCircle();
-    }, Math.floor(Math.random() * 15000) + 3000);
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.interval);
-    clearTimeout(this.timeout);
-  }
-
-  changeCircle() {
-    const stroke = Math.floor(Math.random() * 15) + 5;
-    const radius = Math.floor(Math.random() * 35) + 15 + 2 * stroke;
-    const normalizedRadius = radius - stroke * 2;
-    const circumference = normalizedRadius * 2 * Math.PI;
-
-    this.setState({
-      ...this.state,
-      stroke,
-      radius,
-      normalizedRadius,
-      circumference
-    });
-
-    this.timeout = setTimeout(() => {
-      this.changeCircle();
-    }, Math.floor(Math.random() * 15000) + 3000);
   }
 
   render() {
-    const { x, y } = this.props;
-    let strokeDashoffset =
-      this.state.circumference -
-      (this.state.progress / 100) * this.state.circumference;
-    if (isNaN(strokeDashoffset)) strokeDashoffset = this.state.circumference;
-    const divStyle = { left: `${x}vw`, top: `${y}vh` };
-    const className = `circle-section__circle circle-section__circle--${this.color}`;
+    const { x, y, color } = this.props;
+    const diameter = this.state.radius * 2 + this.state.strokeWidth * 2;
+    const divStyle = {
+      left: `${x}vw`,
+      top: `${y}vh`,
+      transform: `translate(-${diameter / 2}px, -${diameter / 2}px)`
+    };
+    const className = `circle-section__circle circle-section__circle--${color}`;
     return (
       <div className="circle-section" style={divStyle}>
-        <svg height={this.state.radius * 2} width={this.state.radius * 2}>
-          <filter id="f1">
-            <feGaussianBlur result="blurOut" in="offOut" stdDeviation="1" />
-            <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
-          </filter>
+        <svg height={diameter} width={diameter}>
           <circle
             className={className}
-            stroke={this.color}
+            stroke={color}
             fill="transparent"
-            strokeWidth={this.state.stroke}
-            r={this.state.normalizedRadius}
+            strokeWidth={this.state.strokeWidth}
+            r={this.state.radius}
             strokeDasharray={
               this.state.circumference + " " + this.state.circumference
             }
             style={{
-              strokeDashoffset,
-              transform: `rotate(${this.rotation}deg)`
+              strokeDashoffset: this.state.strokeDashoffset,
+              transform: `rotate(${this.state.rotation}deg)`
             }}
-            cx={this.state.radius}
-            cy={this.state.radius}
+            cx={this.state.radius + this.state.strokeWidth}
+            cy={this.state.radius + this.state.strokeWidth}
           />
         </svg>
       </div>
@@ -106,9 +98,9 @@ class CircleSector extends Component {
   }
 }
 
-CircleSector.defaultProps = {
+CircleSection.defaultProps = {
   x: 0,
   y: 0
 };
 
-export default CircleSector;
+export default CircleSection;
