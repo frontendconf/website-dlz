@@ -9,12 +9,16 @@ const CircleSection = dynamic(() => import("./CircleSection"), {
 const TRANSITION_DISTANCE = 600; // 600px
 const TARGET_OPACITY = 0.2;
 
+let throttleEnabled = true;
+
 class Hero extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      opacity: 1
+      opacity: 1,
+      mouseX: 50,
+      mouseY: 50
     };
   }
 
@@ -37,8 +41,25 @@ class Hero extends Component {
     }, 0);
   };
 
+  mouseHandler = e => {
+    if (!throttleEnabled) return;
+    throttleEnabled = false;
+    clearTimeout(this.mouseHandlerTimeout);
+    this.mouseHandlerTimeout = setTimeout(() => {
+      throttleEnabled = true;
+      this.setState({
+        mouseX: (e.clientX / window.innerWidth) * 100,
+        mouseY: (e.clientY / window.innerHeight) * 100
+      });
+    }, 10);
+  };
+
   componentDidMount() {
     window.addEventListener("scroll", this.scrollHandler, {
+      passive: true
+    });
+
+    window.addEventListener("mousemove", this.mouseHandler, {
       passive: true
     });
 
@@ -51,6 +72,7 @@ class Hero extends Component {
 
   componentWillUnmount() {
     window.removeEventListener("scroll", this.scrollHandler);
+    window.removeEventListener("mousemove", this.mouseHandler);
     this.parallaxInstance.destroy();
   }
 
@@ -67,13 +89,62 @@ class Hero extends Component {
             className="hero-bg__overlay"
             style={{ opacity: this.state.opacity }}
           >
-            <CircleSection x="5" y="11" baseRadius={30} color="secondary" />
-            <CircleSection x="80" y="20" baseRadius={50} color="primary" />
-            <CircleSection x="83" y="23" baseRadius={30} color="secondary" />
-            <CircleSection x="40" y="60" baseRadius={30} color="primary" />
-            <CircleSection x="8" y="70" baseRadius={30} color="secondary" />
-            <CircleSection x="2" y="80" baseRadius={30} color="primary" />
-            <CircleSection x="90" y="85" baseRadius={30} color="primary" />
+            <CircleSection
+              x="5"
+              y="11"
+              mouseX={this.state.mouseX}
+              mouseY={this.state.mouseY}
+              baseRadius={30}
+              color="secondary"
+            />
+            <CircleSection
+              x="80"
+              y="20"
+              mouseX={this.state.mouseX}
+              mouseY={this.state.mouseY}
+              baseRadius={50}
+              color="primary"
+            />
+            <CircleSection
+              x="83"
+              y="23"
+              mouseX={this.state.mouseX}
+              mouseY={this.state.mouseY}
+              baseRadius={30}
+              color="secondary"
+            />
+            <CircleSection
+              x="40"
+              y="60"
+              mouseX={this.state.mouseX}
+              mouseY={this.state.mouseY}
+              baseRadius={30}
+              color="primary"
+            />
+            <CircleSection
+              x="8"
+              y="70"
+              mouseX={this.state.mouseX}
+              mouseY={this.state.mouseY}
+              baseRadius={30}
+              color="secondary"
+            />
+            <CircleSection
+              x="2"
+              y="80"
+              mouseX={this.state.mouseX}
+              mouseY={this.state.mouseY}
+              baseRadius={30}
+              color="primary"
+            />
+            <CircleSection
+              x="90"
+              y="85"
+              mouseX={this.state.mouseX}
+              mouseY={this.state.mouseY}
+              baseRadius={30}
+              color="primary"
+            />
           </div>
         </div>
       </div>
