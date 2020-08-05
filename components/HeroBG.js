@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Parallax from "parallax-js";
 import dynamic from "next/dynamic";
+
 const CircleSection = dynamic(() => import("./CircleSection"), {
   ssr: false
 });
@@ -42,16 +43,16 @@ class Hero extends Component {
   };
 
   mouseHandler = e => {
-    if (!throttleEnabled) return;
-    throttleEnabled = false;
-    clearTimeout(this.mouseHandlerTimeout);
-    this.mouseHandlerTimeout = setTimeout(() => {
-      throttleEnabled = true;
-      this.setState({
-        mouseX: (e.clientX / window.innerWidth) * 100,
-        mouseY: (e.clientY / window.innerHeight) * 100
-      });
-    }, 10);
+    // if (!throttleEnabled) return;
+    // // throttleEnabled = false;
+    // clearTimeout(this.mouseHandlerTimeout);
+    // this.mouseHandlerTimeout = setTimeout(() => {
+    //   throttleEnabled = true;
+    this.setState({
+      mouseX: (e.clientX / window.innerWidth) * 100,
+      mouseY: (e.clientY / window.innerHeight) * 100
+    });
+    // }, 10);
   };
 
   componentDidMount() {
@@ -78,15 +79,14 @@ class Hero extends Component {
 
   render() {
     return (
-      <div className="scene hero-bg__wrapper">
+      <div className="hero-bg__wrapper">
         <div
-          data-depth="0.05"
           className={`hero-bg ${
             this.props.template ? `hero-bg--${this.props.template}` : ""
           }`}
         >
           <div
-            className="hero-bg__overlay"
+            className="hero-bg__overlay scene"
             style={{ opacity: this.state.opacity }}
           >
             <CircleSection
@@ -96,6 +96,7 @@ class Hero extends Component {
               mouseY={this.state.mouseY}
               baseRadius={30}
               color="secondary"
+              depth="0.05"
             />
             <CircleSection
               x="80"
@@ -104,6 +105,7 @@ class Hero extends Component {
               mouseY={this.state.mouseY}
               baseRadius={50}
               color="primary"
+              depth="1"
             />
             <CircleSection
               x="83"
@@ -112,6 +114,7 @@ class Hero extends Component {
               mouseY={this.state.mouseY}
               baseRadius={30}
               color="secondary"
+              depth="0.30"
             />
             <CircleSection
               x="40"
@@ -120,6 +123,7 @@ class Hero extends Component {
               mouseY={this.state.mouseY}
               baseRadius={30}
               color="primary"
+              depth="0.50"
             />
             <CircleSection
               x="8"
@@ -128,6 +132,7 @@ class Hero extends Component {
               mouseY={this.state.mouseY}
               baseRadius={30}
               color="secondary"
+              depth="0.70"
             />
             <CircleSection
               x="2"
@@ -136,6 +141,7 @@ class Hero extends Component {
               mouseY={this.state.mouseY}
               baseRadius={30}
               color="primary"
+              depth="0.10"
             />
             <CircleSection
               x="90"
@@ -144,6 +150,7 @@ class Hero extends Component {
               mouseY={this.state.mouseY}
               baseRadius={30}
               color="primary"
+              depth="1.2"
             />
           </div>
         </div>

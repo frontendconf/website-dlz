@@ -72,24 +72,29 @@ class CircleSection extends Component {
   }
 
   render() {
-    const { x, y, mouseX, mouseY, color } = this.props;
+    const { x, y, mouseX, mouseY, color, depth } = this.props;
     const diameter = this.state.radius * 2 + this.state.strokeWidth * 2;
     const mouseDistance = (Math.abs(mouseX - x) + Math.abs(mouseY - y)) / 100;
+
+    const distance = (30 / 100) * mouseDistance;
+
     const divStyle = {
       left: `${x - ((x - mouseX) * Math.abs(x - mouseX)) / 800}vw`,
       top: `${y - ((y - mouseX) * Math.abs(y - mouseY)) / 800}vh`,
-      transform: `translate(-${diameter /
-        2}px, -${diameter}px) scale(${mouseDistance})`
+      transform: `translate(-${diameter / 2}px, -${diameter}px) scale(${0.2 +
+        distance})`
     };
+
     const circleStyleFiltered = {
       strokeDashoffset:
-        this.state.circumference - this.state.strokeDashoffset * mouseDistance,
+        this.state.circumference -
+        this.state.strokeDashoffset * (0.5 + distance),
       transform: `rotate(${this.state.rotation}deg)`,
       filter: "url(#dropshadow)"
     };
     const className = `circle-section__circle circle-section__circle--${color}`;
     return (
-      <div className="circle-section" style={divStyle}>
+      <div className="circle-section" style={divStyle} data-depth={depth}>
         <svg height={diameter} width={diameter}>
           <defs>
             <filter
