@@ -81,7 +81,7 @@ class CircleSection extends Component {
     const divStyle = {
       left: `${x - ((x - mouseX) * Math.abs(x - mouseX)) / 800}vw`,
       top: `${y - ((y - mouseX) * Math.abs(y - mouseY)) / 800}vh`,
-      transform: `translate(-${diameter / 2}px, -${diameter}px) scale(${0.2 +
+      transform: `translate(-${diameter / 2}px, -${diameter}px) scale(${0.5 +
         distance})`
     };
 
