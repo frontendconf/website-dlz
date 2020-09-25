@@ -168,8 +168,6 @@ export default withRouter(({ router: { query } }) => {
   let isHome = slug === "/";
   let isVenue = slug === "venue";
 
-  console.log(slug);
-
   // Root categories
   switch (slug) {
     case "schedule":

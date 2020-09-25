@@ -34,7 +34,7 @@ class Hero extends Component {
         this.setState({
           opacity: 1 - (scrollTop / TRANSITION_DISTANCE) * (1 - TARGET_OPACITY)
         });
-      } else if (this.state.opacity < TARGET_OPACITY) {
+      } else if (this.state.opacity > TARGET_OPACITY) {
         this.setState({
           opacity: TARGET_OPACITY
         });

@@ -25,6 +25,58 @@ const isReverseAnimation = (title, oldTitle) => {
   return titleIndex < oldTitleIndex;
 };
 
+const createNewTitle = (title, current, isReverse = false) => {
+  const newEl = document.createElement("h1");
+  newEl.className = "hero__title";
+  newEl.innerHTML = title;
+  current.appendChild(newEl);
+
+  const fontSize = window.getComputedStyle(newEl).getPropertyValue("font-size");
+  const characterToFontSize = 0.702083333;
+  const spaceToFontSize = 0.3;
+  const spaceWidth = parseInt(fontSize, 10) * spaceToFontSize;
+  const availableWidth = parseInt(
+    window.getComputedStyle(newEl).getPropertyValue("width"),
+    10
+  );
+
+  const lines = [];
+  let currentLine = [];
+  let lineCount = 0;
+
+  title.split(" ").map(item => {
+    const word = item.length * characterToFontSize * parseInt(fontSize, 10);
+    if (lineCount + word > availableWidth) {
+      lines.push(currentLine.join(" "));
+      currentLine = [];
+      lineCount = 0;
+    }
+
+    if (lineCount > 0) {
+      lineCount += spaceWidth;
+    }
+
+    lineCount += word;
+    currentLine.push(item);
+  });
+
+  lines.push(currentLine.join(" "));
+  const html = lines.join('</span></div><div><span class="hero__title-item">');
+  const fullHtml = `<div><span class="hero__title-item">${html}</span></div>`;
+
+  newEl.innerHTML = fullHtml;
+  current.appendChild(newEl);
+  current.querySelectorAll(".hero__title-item").forEach(function(el, i) {
+    setTimeout(function() {
+      if (isReverse) {
+        el.classList.add("hero__title-item--in-reverse");
+      } else {
+        el.classList.add("hero__title-item--in");
+      }
+    }, 100 * i);
+  });
+};
+
 class Hero extends Component {
   constructor(props) {
     super(props);
@@ -41,10 +93,7 @@ class Hero extends Component {
     this.myRef.current.querySelectorAll("h1").forEach(item => {
       item.remove();
     });
-    const newEl = document.createElement("h1");
-    newEl.className = "hero__title";
-    newEl.innerHTML = this.props.title;
-    this.myRef.current.appendChild(newEl);
+    createNewTitle(this.props.title, this.myRef.current);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -58,9 +107,15 @@ class Hero extends Component {
       // Flag old title to move out
       const currentTitle = this.myRef.current.querySelector("h1");
       currentTitle.classList.add("hero__title--out");
-      if (isReverse) {
-        currentTitle.classList.add("hero__title--out-reverse");
-      }
+      const currentTitleItem = currentTitle.querySelectorAll(
+        "h1 .hero__title-item"
+      );
+      currentTitleItem.forEach(item => {
+        item.classList.add("hero__title-item--out");
+        if (isReverse) {
+          item.classList.add("hero__title-item--out-reverse");
+        }
+      });
 
       // In some situations an additional element is rendered, remove all but the old one
       this.myRef.current
@@ -70,18 +125,14 @@ class Hero extends Component {
         });
 
       // Add the new title
-      const newEl = document.createElement("h1");
-      newEl.className = "hero__title";
-      if (isReverse) {
-        newEl.classList.add("hero__title--in-reverse");
-      }
-      newEl.innerHTML = nextProps.title;
-      this.myRef.current.appendChild(newEl);
+      createNewTitle(nextProps.title, this.myRef.current, isReverse);
 
       // Remove old title
       setTimeout(() => {
-        currentTitle.parentNode.removeChild(currentTitle);
-      }, 125);
+        if (currentTitle.parentNode) {
+          currentTitle.parentNode.removeChild(currentTitle);
+        }
+      }, 500);
     }
   }
 
