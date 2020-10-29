@@ -51,70 +51,31 @@ class CircleSection extends Component {
       minMax(minCircumference, maxCircumference);
     const targetRotation = minMax(minRotationAnimation, maxRotationAnimation);
 
-    const step = percentage => {
-      const offset = (strokeDashoffset * percentage) / 100;
-      const rotation = (targetRotation * percentage) / 100;
-
+    requestAnimationFrame(() => {
       this.setState({
         ...this.state,
-        strokeDashoffset: this.direction === "left" ? -offset : offset,
-        rotation: this.direction === "left" ? -rotation : rotation
+        strokeDashoffset:
+          this.direction === "left" ? -strokeDashoffset : strokeDashoffset,
+        rotation:
+          this.direction === "left"
+            ? this.state.rotation - targetRotation
+            : this.state.rotation + targetRotation
       });
-
-      if (percentage < 100) {
-        setTimeout(() => {
-          step(percentage + 1);
-        }, 1);
-      }
-    };
-
-    step(0);
+    });
   }
 
   render() {
-    const { x, y, mouseX, mouseY, color, depth } = this.props;
+    const { x, y, color } = this.props;
     const diameter = this.state.radius * 2 + this.state.strokeWidth * 2;
-    const mouseDistance = (Math.abs(mouseX - x) + Math.abs(mouseY - y)) / 100;
-
-    const distance = (30 / 100) * mouseDistance;
-
     const divStyle = {
-      left: `${x - ((x - mouseX) * Math.abs(x - mouseX)) / 800}vw`,
-      top: `${y - ((y - mouseX) * Math.abs(y - mouseY)) / 800}vh`,
-      transform: `translate(-${diameter / 2}px, -${diameter}px) scale(${0.5 +
-        distance})`
-    };
-
-    const circleStyleFiltered = {
-      strokeDashoffset:
-        this.state.circumference -
-        this.state.strokeDashoffset * (0.5 + distance),
-      transform: `rotate(${this.state.rotation}deg)`,
-      filter: "url(#dropshadow)"
+      left: `${x}vw`,
+      top: `${y}vh`,
+      transform: `translate(-${diameter / 2}px, -${diameter / 2}px)`
     };
     const className = `circle-section__circle circle-section__circle--${color}`;
     return (
-      <div className="circle-section" style={divStyle} data-depth={depth}>
+      <div className="circle-section" style={divStyle}>
         <svg height={diameter} width={diameter}>
-          <defs>
-            <filter
-              id="dropshadow"
-              x="0"
-              y="0"
-              width="180%"
-              height="180%"
-              filterUnits="userSpaceOnUse"
-            >
-              <feGaussianBlur in="SourceGraphic" stdDeviation="4" />
-              <feOffset dx="5" dy="5" result="offsetblur" />
-              <feOffset dx="-5" dy="-5" result="offsetblur" />
-              <feMerge>
-                <feMergeNode />
-                <feMergeNode in="SourceGraphic" />
-                <feMergeNode in="SourceGraphic" />
-              </feMerge>
-            </filter>
-          </defs>
           <circle
             className={className}
             stroke={color}
@@ -124,7 +85,10 @@ class CircleSection extends Component {
             strokeDasharray={
               this.state.circumference + " " + this.state.circumference
             }
-            style={circleStyleFiltered}
+            style={{
+              strokeDashoffset: this.state.strokeDashoffset,
+              transform: `rotate(${this.state.rotation}deg)`
+            }}
             cx={this.state.radius + this.state.strokeWidth}
             cy={this.state.radius + this.state.strokeWidth}
           />
