@@ -8,6 +8,7 @@ import * as GoogleAnalytics from "../lib/gtag";
 import * as HubSpot from "../lib/hubspot";
 import * as Iubenda from "../lib/iubenda";
 import Router from "next/router";
+import FadeIn from "../components/FadeIn";
 
 Router.events.on("routeChangeComplete", url => {
   GoogleAnalytics.pageview(url);
@@ -23,7 +24,9 @@ class MyApp extends App {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <GoogleAnalytics.Script />
           <HubSpot.Script />
-          <Iubenda.Script />
+          <FadeIn>
+            <Iubenda.Script />
+          </FadeIn>
           <link
             rel="apple-touch-icon-precomposed"
             sizes="57x57"
